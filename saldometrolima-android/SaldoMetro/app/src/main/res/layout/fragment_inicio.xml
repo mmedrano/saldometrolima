@@ -1,0 +1,147 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bitone.saldometro.controller.InicioFragment">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo_metro_lima"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/padding">
+
+        <View style="@style/Divider"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="#CC000000">
+            <TextView
+                android:id="@+id/tvTarjeta"
+                android:textColor="@color/texto_blanco"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tarjeta"
+                android:textSize="30sp"/>
+            <TextView
+                android:id="@+id/tvTarifa"
+                android:text="Tarifa"
+                style="@style/TextNormalStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CC000000">
+                <TextView
+                    android:text="@string/saldo"
+                    style="@style/TextNormalStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:width="0dp"
+                    />
+                <TextView
+                    android:text="@string/viajes"
+                    style="@style/TextNormalStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:width="0dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#CC000000"
+                >
+                <TextView
+                    android:id="@+id/tvSaldo"
+                    android:text="@string/tsaldo"
+                    style="@style/TextValorSaldoViaje"
+                    android:textSize="45sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:width="0dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tvViajesP"
+                    style="@style/TextNormalStyle"
+                    android:text="@string/tviajes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="45sp"
+                    android:width="0dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/Divider"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/btnAgregarSaldo"
+                android:background="@drawable/button_metro"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="@string/as"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                style="@style/buttonStyle"
+                />
+            <Button
+                android:id="@+id/btnMarcarViaje"
+                android:background="@drawable/button_metro"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/mv"
+                style="@style/buttonStyle"
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

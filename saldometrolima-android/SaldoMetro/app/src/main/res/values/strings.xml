@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">SaldoMetro</string>
+
+    <string name="titulo_opcion_inicio">Inicio</string>
+    <string name="titulo_opcion_elegir_tarjeta">Elegir Tarjeta</string>
+    <string name="titulo_opcion_horario">Horario</string>
+    <string name="titulo_opcion_reestablecer">Reestablecer saldo</string>
+    <string name="titulo_opcion_movimientos">Movimientos</string>
+    <string name="titulo_opcion_ayuda">Sobre SaldoMetro</string>
+
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="tarjeta">Tarjeta Adulto</string>
+    <string name="saldo">SALDO (S/.)</string>
+    <string name="tsaldo">0.00</string>
+    <string name="viajes">VIAJES POSIBLES</string>
+    <string name="tviajes">0</string>
+    <string name="as">Agregar saldo</string>
+    <string name="mv">Marcar viaje</string>
+    <string name="title_activity_elegir_tarjeta">Elegir Tarjeta</string>
+
+    <string name="tmu">Medio Universitario</string>
+    <string name="tme">Medio Escolar</string>
+    <string name="ta">Tarjeta Adulto</string>
+
+    <string name="title_activity_agregar_saldo">Agregar Saldo</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="monto">0.00</string>
+    <string name="title_activity_marcar_viaje">MarcarViajeActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+
+
+
+</resources>
