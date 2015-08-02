@@ -6,7 +6,7 @@ package com.bitone.saldometro.model.entity;
 public class MovimientoSaldo {
     public static final int MOV_RECARGA = 1;
     public static final int MOV_MARCAR_VIAJE = 2;
-    public static final int MOV_REESTABLECER_SALDO = 1;
+    public static final int MOV_REESTABLECER_SALDO = 3;
 
     private int idMovimiento;
     private int cantidadPersonas;
