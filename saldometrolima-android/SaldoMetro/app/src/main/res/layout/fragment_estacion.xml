@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/padding">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="70sp"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:text="ESTACIÓN"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:background="#006400"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:text="DISTRITO"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:background="#006400"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:text="UBICACIÓN"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:background="#006400"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:text="HORARIO"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:background="#006400"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+        <ListView android:id="@+id/LstEstaciones"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

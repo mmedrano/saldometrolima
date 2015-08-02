@@ -64,7 +64,7 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 2:
                 mTitle = getString(R.string.titulo_opcion_horario);
-                frgOpcion = new HorarioFragment();
+                frgOpcion = new EstacionFragment();
                 break;
             case 3:
                 mTitle = getString(R.string.titulo_opcion_movimientos);

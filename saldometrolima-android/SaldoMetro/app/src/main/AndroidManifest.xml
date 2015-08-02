@@ -36,6 +36,11 @@
             android:screenOrientation="portrait"
             android:label="@string/title_activity_marcar_viaje" >
         </activity>
+        <activity
+            android:name=".HorarioActivity"
+            android:screenOrientation="portrait"
+            android:label="Horario" >
+        </activity>
     </application>
 
 </manifest>

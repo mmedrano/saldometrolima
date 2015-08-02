@@ -57,6 +57,9 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
 
         preferences = new SMPreferences(this);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         cargarDatos();
         validarMumPersonas();
     }
@@ -69,9 +72,11 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+            case android.R.id.home:
+                cerrar();
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -166,5 +171,9 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
 
         }
 
+    }
+
+    private void cerrar(){
+        finish();
     }
 }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/padding">
+
+    <!--<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+        <TextView android:id="@+id/tvTipoMovimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo Movimiento"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+        <TextView android:id="@+id/tvEstacion"
+            android:textColor="@color/negro"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estación"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_weight="1"/>
+
+        <TextView android:id="@+id/tvDistrito"
+            android:textColor="@color/negro"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Distrito"
+            android:textStyle="normal"
+            android:textSize="14sp"
+            android:layout_weight="1"/>
+
+        <TextView android:id="@+id/tvUbicacion"
+            android:textColor="@color/negro"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ubicación"
+            android:textStyle="normal"
+            android:textSize="14sp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/btnHorario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:src="@drawable/abc_ic_search_api_mtrl_alpha"
+            />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

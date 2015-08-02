@@ -43,6 +43,9 @@ public class AgregarSaldoActivity extends ActionBarActivity implements View.OnCl
 
         preferences = new SMPreferences(this);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         cargarDatos();
     }
 
@@ -54,6 +57,13 @@ public class AgregarSaldoActivity extends ActionBarActivity implements View.OnCl
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                cerrar();
+                break;
+
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -104,5 +114,9 @@ public class AgregarSaldoActivity extends ActionBarActivity implements View.OnCl
         }catch (Exception ex){
             Toast.makeText(this, "Ocurrio un error al agregar el monto a recargar.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void cerrar(){
+        finish();
     }
 }
