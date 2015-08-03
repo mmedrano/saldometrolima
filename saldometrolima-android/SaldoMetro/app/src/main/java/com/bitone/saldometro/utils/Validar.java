@@ -89,4 +89,11 @@ public class Validar {
         }
         return out;
     }
+
+    public void convierteFormato(String cadena){
+        /*¿ = \u00BF
+ñ = \u0148
+á = \u0227
+é = \u00E9*/
+    }
 }
