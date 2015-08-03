@@ -10,7 +10,7 @@ public class TipoMovimientoDataSource {
 
     //Metainformación de la base de datos
     public static final String TIPOMOVIMIENTO_TABLE_NAME = "TipoMovimiento";
-    public static final String STRING_TYPE = "text";
+    public static final String STRING_TYPE = "nvarchar";
     public static final String INT_TYPE = "integer";
     public static final String DEC_TYPE = "double";
 
