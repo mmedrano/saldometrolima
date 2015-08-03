@@ -10,7 +10,7 @@ public class EstacionDataSource {
 
     //Metainformación de la base de datos
     public static final String ESTACION_TABLE_NAME = "Estacion";
-    public static final String STRING_TYPE = "text";
+    public static final String STRING_TYPE = "nvarchar";
     public static final String INT_TYPE = "integer";
     public static final String DEC_TYPE = "double";
 
