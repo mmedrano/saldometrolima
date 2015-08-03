@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.bitone.saldometro.model.entity.TipoTarjeta;
 import com.bitone.saldometro.utils.SMPreferences;
 
+import java.nio.charset.Charset;
+
 
 public class ElegirTarjetaActivity extends ActionBarActivity implements View.OnClickListener {
 
@@ -19,6 +21,9 @@ public class ElegirTarjetaActivity extends ActionBarActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_elegir_tarjeta);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     @Override
@@ -28,12 +33,12 @@ public class ElegirTarjetaActivity extends ActionBarActivity implements View.OnC
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        /*
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+            case android.R.id.home:
+                cerrar();
+                break;
+
         }
-        */
         return super.onOptionsItemSelected(item);
     }
 
@@ -74,6 +79,14 @@ public class ElegirTarjetaActivity extends ActionBarActivity implements View.OnC
 
     //METODOS
     private void irAInicio(){
+        Intent intentMain = new Intent();
+        intentMain.setClass(getApplicationContext(), MainActivity.class);
+        intentMain.setAction(Intent.ACTION_MAIN);
+        startActivity(intentMain);
+        finish();
+    }
+
+    private void cerrar(){
         Intent intentMain = new Intent();
         intentMain.setClass(getApplicationContext(), MainActivity.class);
         intentMain.setAction(Intent.ACTION_MAIN);

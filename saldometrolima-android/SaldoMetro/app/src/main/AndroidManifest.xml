@@ -23,15 +23,23 @@
 
         <activity
             android:name=".ElegirTarjetaActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_elegir_tarjeta" >
         </activity>
         <activity
             android:name=".AgregarSaldoActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_agregar_saldo" >
         </activity>
         <activity
             android:name=".MarcarViajeActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_marcar_viaje" >
+        </activity>
+        <activity
+            android:name=".HorarioActivity"
+            android:screenOrientation="portrait"
+            android:label="Horario" >
         </activity>
     </application>
 
