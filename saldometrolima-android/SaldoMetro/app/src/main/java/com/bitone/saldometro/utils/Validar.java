@@ -1,6 +1,8 @@
 package com.bitone.saldometro.utils;
 
+import com.bitone.saldometro.model.entity.MovimientoSaldo;
 import com.bitone.saldometro.model.entity.SMResultado;
+import com.bitone.saldometro.model.entity.TipoMovimiento;
 
 import java.text.DecimalFormat;
 import java.util.StringTokenizer;
@@ -24,7 +26,7 @@ public class Validar {
         return (double) tmp / factor;
     }
 
-    public static SMResultado validaDouble(String credito, double saldo){
+    public static SMResultado validaDouble(String credito, double saldo, int tipoMovimiento){
         SMResultado resultado;
         try {
             resultado = new SMResultado();
@@ -33,7 +35,10 @@ public class Validar {
             }else if(Double.parseDouble(credito) == 0){
                 resultado.setMensaje("Por favor ingrese un monto válido");
             }else{
-                if(Double.parseDouble(credito) + saldo > Globales.MONTO_MAXIMO_RECARGA){
+                double montoAValidarMaximo=0;
+                if(tipoMovimiento== MovimientoSaldo.MOV_RECARGA){montoAValidarMaximo=Double.parseDouble(credito) + saldo;}
+                else if(tipoMovimiento== MovimientoSaldo.MOV_REESTABLECER_SALDO) {montoAValidarMaximo=Double.parseDouble(credito);}
+                if(montoAValidarMaximo > Globales.MONTO_MAXIMO_RECARGA){
                     resultado.setMensaje("Ha sobrepasado el límite, el saldo máximo es S/." + Double.toString(Globales.MONTO_MAXIMO_RECARGA));
                 }
                 else if(credito.contains(".") || credito.contains(",")){

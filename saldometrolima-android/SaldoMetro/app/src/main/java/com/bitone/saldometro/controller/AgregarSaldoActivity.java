@@ -83,7 +83,7 @@ public class AgregarSaldoActivity extends ActionBarActivity implements View.OnCl
     private void agregarSaldo(){
         try{
             String strMontoRecarga = txtCredito.getText().toString();
-            SMResultado resultadoValidacion = Validar.validaDouble(strMontoRecarga, montoSaldo);
+            SMResultado resultadoValidacion = Validar.validaDouble(strMontoRecarga, montoSaldo, MovimientoSaldo.MOV_RECARGA);
             if(resultadoValidacion.esCorrecto()){
                 double montoRecarga = Validar.round(Double.parseDouble(strMontoRecarga), 2);
 

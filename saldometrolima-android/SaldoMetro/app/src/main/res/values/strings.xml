@@ -48,5 +48,9 @@
     <string name="marcar">Marcar viaje</string>
 
 
+    <string name="sa">SALDO ACTUAL</string>
+    <string name="sc">SALDO CORRECTO</string>
+    <string name="reestablecer">Reestablecer Saldo</string>
+
 
 </resources>
