@@ -12,12 +12,7 @@ import java.util.StringTokenizer;
  */
 public class CalculaHorario {
 
-    //Es lo único que se utilizará
-    private String[] salidasABayovar={"6:00","6:02","6:04","6:06","6:08","6:10","6:13","6:15","6:17",
-            "6:19","6:22","6:24","6:26","6:29","6:31","6:33","6:35","6:37","6:40","6:42","6:44",
-            "6:46","6:48","6:50","6:55","6:54",};//Se utilizará la misma data a la inversa para la dirección contraria
-
-     /*Información complementaria
+    /*Datos
     *
     * 26 estaciones
         -Salidas desde Villa el Salvador y Bayovar 6:00 am
@@ -31,6 +26,21 @@ public class CalculaHorario {
 
         tiempo entre salida de tren 6-10 min L-V, 10 min Sab, 14 min Dom
     * */
+    public static final int FREC_DOMINGO = 14;
+    public static final int FREC_SABADO = 10;
+    public static final int FREC_L_V = 8;
+
+    public static final int MINS_SERVICIO = 960; //horas de servicio 16 hrs
+    public static final int HORA_MINUTOS = 60; // 1hr <> 60 min
+
+    public static final int TOTALVIAJES_L_V = 120; // 120 viajes solo días L - V
+
+    //Es lo único que se utilizará
+    private String[] salidasABayovar={"6:00","6:02","6:04","6:06","6:08","6:10","6:13","6:15","6:17",
+            "6:19","6:22","6:24","6:26","6:29","6:31","6:33","6:35","6:37","6:40","6:42","6:44",
+            "6:46","6:48","6:50","6:55","6:54",};//Se utilizará la misma data a la inversa para la dirección contraria
+
+
     public String[] salidasAVillaSalvador(){
         String[] salidaAVilla= new String[salidasABayovar.length];
         for(int i=salidasABayovar.length-1, j=0; i>=0; i--,j++){
@@ -40,18 +50,24 @@ public class CalculaHorario {
     }
 
 
-
+    int frecuenciaTrenes=0;
     public List<HorarioEstacion> calcularHorarios(int idEstacion, String ddMMyyyy){
         //Disponibilidad del tren al día 6:00 am a 10:00pm -> 16 hrs
-        //16 hrs <> 960 min
-        int minutosServicio=960;
         //Frecuencia entre trenes promedio 10 min
-        //Cantidad de horarios al día por Estacion 960/frecuencia entre trenes
+        //Cantidad de horarios al día por Estacion = MINS_SERVICIO /frecuencia entre trenes (min)
 
-        int frecuenciaTrenes=calculaFrecuencia(ddMMyyyy);
-        int vecesAlDiaTotal=minutosServicio/frecuenciaTrenes;
+        frecuenciaTrenes=calculaFrecuencia(ddMMyyyy);
+        int viajesAlDiaTotal=0;
+
+        if(frecuenciaTrenes==FREC_L_V){
+            viajesAlDiaTotal=TOTALVIAJES_L_V;
+        }
+        else{
+            viajesAlDiaTotal=MINS_SERVICIO/frecuenciaTrenes;
+        }
 
 
+        //
         String primeraSalidaABayovar=salidasABayovar[idEstacion-1];
         String primeraSalidaAVilla=salidasAVillaSalvador()[idEstacion-1];
 
@@ -67,15 +83,17 @@ public class CalculaHorario {
         int minutoBayovar=Integer.parseInt(st.nextToken());
         int horaVilla=Integer.parseInt(st.nextToken());
         int minutoVilla=Integer.parseInt(st.nextToken());
+        //
 
-
-        for(int i=0; i<vecesAlDiaTotal; i++){
+        for(int i=0; i<viajesAlDiaTotal; i++){
             String nuevaHoraABayovar="";
             String nuevaHoraAVillaSalvador="";
+            
+            if(viajesAlDiaTotal==TOTALVIAJES_L_V){frecuenciasDiaParticularABayovar(i);}// Calcula la frecuencia variable: Si es L-V
 
-            if(minutoBayovar>=60-frecuenciaTrenes){
+            if(minutoBayovar>=HORA_MINUTOS-frecuenciaTrenes){
                 horaBayovar++;
-                minutoBayovar-=(60-frecuenciaTrenes);
+                minutoBayovar-=(HORA_MINUTOS-frecuenciaTrenes);
                 if(minutoBayovar<10){
                     nuevaHoraABayovar=horaBayovar+":0"+minutoBayovar;
                 }
@@ -89,9 +107,11 @@ public class CalculaHorario {
                 else nuevaHoraABayovar=horaBayovar+":"+minutoBayovar;
             }
 
-            if(minutoVilla>=60-frecuenciaTrenes){
+            if(viajesAlDiaTotal==TOTALVIAJES_L_V){frecuenciasDiaParticularAVilla(i);}// Calcula la frecuencia variable: Si es L-V
+
+            if(minutoVilla>=HORA_MINUTOS-frecuenciaTrenes){
                 horaVilla++;
-                minutoVilla-=(60-frecuenciaTrenes);
+                minutoVilla-=(HORA_MINUTOS-frecuenciaTrenes);
                 if(minutoVilla<10){
                     nuevaHoraAVillaSalvador=horaVilla+":0"+minutoVilla;
                 }
@@ -114,6 +134,48 @@ public class CalculaHorario {
         return horarioEstacionLst;
     }
 
+    public void frecuenciasDiaParticularABayovar(int param){
+        if(param<2){
+            frecuenciaTrenes=10;
+        }
+        else if(param==2){
+            frecuenciaTrenes=7;
+        }
+        else if(param>=3 && param<=33){
+            frecuenciaTrenes=6;
+        }
+        else if(param>=34 && param<=81){
+            frecuenciaTrenes=10;
+        }
+        else if(param>=82 && param<=109){
+            frecuenciaTrenes=6;
+        }
+        else if(param>=110 && param<=118){
+            frecuenciaTrenes=10;
+        }
+        else if(param==119){
+            frecuenciaTrenes=9;
+        }
+    }
+
+    public void frecuenciasDiaParticularAVilla(int param){
+        if(param<3){
+            frecuenciaTrenes=10;
+        }
+        else if(param>=3 && param<=32){
+            frecuenciaTrenes=6;
+        }
+        else if(param>=33 && param<=80){
+            frecuenciaTrenes=10;
+        }
+        else if(param>=81 && param<=110){
+            frecuenciaTrenes=6;
+        }
+        else if(param>=111 && param<=119){
+            frecuenciaTrenes=10;
+        }
+    }
+
 
 
     public String muestraDiaDeSemana(String ddMMyyyy){
@@ -134,15 +196,15 @@ public class CalculaHorario {
         if(diaNombre!=null){
             diaNombre=diaNombre.toUpperCase();
             if((diaNombre.charAt(0)=='S')||diaNombre.equals("SATURDAY")){//Esto es solo porque no estoy seguro si me devolverá tildes->Sábado || Si está en inglés
-                return 10;
+                return FREC_SABADO; // 10 min
             }
             else if(diaNombre.equals("DOMINGO")||diaNombre.equals("SUNDAY")){
-                return 14;
+                return FREC_DOMINGO; // 14 min
             }
-            else return 8;
+            else return FREC_L_V;
         }
         else{
-            return 10;
+            return FREC_L_V;
         }
     }
 

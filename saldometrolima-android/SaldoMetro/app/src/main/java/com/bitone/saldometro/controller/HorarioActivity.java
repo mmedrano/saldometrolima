@@ -221,7 +221,7 @@ public class HorarioActivity extends ActionBarActivity {
             tvDireccionVilla.setText("Llegada a V. E. S.");
         }
         else if(idEstacion==26){
-            tvDireccionBayovar.setText("Llegada a Bayovar");
+            tvDireccionBayovar.setText("Llegada a Bayóvar");
         }
     }
 
