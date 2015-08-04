@@ -1,6 +1,8 @@
 package com.bitone.saldometro.model.business;
 
 import android.content.Context;
+import android.text.Html;
+
 
 import com.bitone.saldometro.dao.crud.MovimientoDao;
 import com.bitone.saldometro.dao.crud.TarjetaDao;
@@ -59,7 +61,7 @@ public class MovimientoSaldoBusiness {
                 movimientoDao.insertar(nuevoMovimientoSaldo);
                 tarjetaDao = new TarjetaDao(context);
                 tarjetaDao.actualizar(tarjetaAcualizada);
-                resultado.setMensaje("Se ha descontado S/"+nuevoMovimientoSaldo.getMonto()+" de su tarjeta!");
+                resultado.setMensaje("Se ha descontado S/" + nuevoMovimientoSaldo.getMonto() + " de su tarjeta! ");
             }
         }catch (Exception ex){
             resultado = new SMResultado();

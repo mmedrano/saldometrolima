@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.bitone.saldometro.model.business.EstacionBusiness;
 import com.bitone.saldometro.model.entity.Estacion;
-import com.bitone.saldometro.utils.Validar;
 
 import java.util.List;
 
@@ -74,13 +73,13 @@ public class EstacionFragment extends Fragment {
             View item = inflater.inflate(R.layout.listitem_estacion, null);
 
             TextView tvEstacion = (TextView)item.findViewById(R.id.tvEstacion);
-            tvEstacion.setText(Validar.convertFromUTF8(Validar.convertToUTF8(datos[position].getNombreEstacion())));
+            tvEstacion.setText(datos[position].getNombreEstacion());
 
             TextView tvDistrito = (TextView)item.findViewById(R.id.tvDistrito);
-            tvDistrito.setText(Validar.convertFromUTF8(Validar.convertToUTF8(datos[position].getDistrito())));
+            tvDistrito.setText(datos[position].getDistrito());
 
             TextView tvUbicacion = (TextView)item.findViewById(R.id.tvUbicacion);
-            tvUbicacion.setText(Validar.convertFromUTF8(Validar.convertToUTF8(datos[position].getUbicacion() + "")));
+            tvUbicacion.setText(datos[position].getUbicacion() + "");
 
 
             ImageButton btn = (ImageButton)item.findViewById(R.id.btnHorario);
