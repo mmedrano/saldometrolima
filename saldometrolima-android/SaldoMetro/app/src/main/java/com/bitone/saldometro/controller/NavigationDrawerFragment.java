@@ -22,32 +22,20 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-/**
- * Fragment used for managing interactions for and presentation of a navigation drawer.
- * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
- * design guidelines</a> for a complete explanation of the behaviors implemented here.
- */
+import com.bitone.saldometro.controller.adapter.CustomDrawerAdapter;
+import com.bitone.saldometro.controller.item.DrawerItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class NavigationDrawerFragment extends Fragment {
 
-    /**
-     * Remember the position of the selected item.
-     */
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 
-    /**
-     * Per the design guidelines, you should show the drawer on launch until the user manually
-     * expands it. This shared preference tracks this.
-     */
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
 
-    /**
-     * A pointer to the current callbacks instance (the Activity).
-     */
     private NavigationDrawerCallbacks mCallbacks;
 
-    /**
-     * Helper component that ties the action bar to the navigation drawer.
-     */
     private ActionBarDrawerToggle mDrawerToggle;
 
     private DrawerLayout mDrawerLayout;
@@ -57,6 +45,8 @@ public class NavigationDrawerFragment extends Fragment {
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
+
+    private List<DrawerItem> dataList;
 
     public NavigationDrawerFragment() {
     }
@@ -97,18 +87,16 @@ public class NavigationDrawerFragment extends Fragment {
                 selectItem(position);
             }
         });
-        mDrawerListView.setAdapter(new ArrayAdapter<String>(
-                getActionBar().getThemedContext(),
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1,
-                new String[]{
-                        getString(R.string.titulo_opcion_inicio),
-                        getString(R.string.titulo_opcion_elegir_tarjeta),
-                        getString(R.string.titulo_opcion_horario),
-                        getString(R.string.titulo_opcion_movimientos),
-                        getString(R.string.titulo_opcion_reestablecer),
-                        getString(R.string.titulo_opcion_ayuda),
-                }));
+
+        dataList = new ArrayList<DrawerItem>();
+        dataList.add(new DrawerItem(getString(R.string.titulo_opcion_inicio), R.drawable.ic_home_white));
+        dataList.add(new DrawerItem(getString(R.string.titulo_opcion_elegir_tarjeta), R.drawable.ic_credit_card_white));
+        dataList.add(new DrawerItem(getString(R.string.titulo_opcion_horario), R.drawable.ic_alarm_white));
+        dataList.add(new DrawerItem(getString(R.string.titulo_opcion_movimientos), R.drawable.ic_swap_horiz_white));
+        dataList.add(new DrawerItem(getString(R.string.titulo_opcion_reestablecer), R.drawable.ic_settings_backup_restore_white));
+        dataList.add(new DrawerItem(getString(R.string.titulo_opcion_ayuda), R.drawable.ic_info_outline_white));
+        mDrawerListView.setAdapter(new CustomDrawerAdapter(getActivity(), R.layout.listitem_nav_drawer, dataList));
+
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
