@@ -26,9 +26,9 @@ import com.bitone.saldometro.utils.Validar;
 public class AgregarSaldoActivity extends ActionBarActivity implements View.OnClickListener {
     Button btnAgregar;
     EditText txtCredito;
-    TextView tvSaldoActual;
+    TextView tvSaldoActual, tvMontoMaximo;
 
-    double montoSaldo = 0.00;
+    double montoSaldo = 0.00, montoMaximo = 0.00;
     SMPreferences preferences;
 
     @Override
@@ -37,6 +37,7 @@ public class AgregarSaldoActivity extends ActionBarActivity implements View.OnCl
         setContentView(R.layout.activity_agregar_saldo);
 
         txtCredito = (EditText) findViewById(R.id.txtCredito);
+        tvMontoMaximo = (TextView) findViewById(R.id.tvMontoMaximo);
         tvSaldoActual = (TextView) findViewById(R.id.tvSaldoActual);
         btnAgregar = (Button) findViewById(R.id.btnAgregar);
         btnAgregar.setOnClickListener(this);
@@ -77,7 +78,10 @@ public class AgregarSaldoActivity extends ActionBarActivity implements View.OnCl
     private void cargarDatos(){
         montoSaldo = getIntent().getExtras().getDouble(Globales.EXTRA_SALDO_ACTUAL);
         montoSaldo = Validar.round(montoSaldo, 2);
-        tvSaldoActual.setText(Globales.MONEDA + SMString.obtenerFormatoMonto(montoSaldo));
+        tvSaldoActual.setText(SMString.obtenerFormatoMonto(montoSaldo));
+
+        montoMaximo = Validar.round(Globales.MONTO_MAXIMO_RECARGA - montoSaldo, 2);
+        tvMontoMaximo.setText(SMString.obtenerFormatoMonto(montoMaximo));
     }
 
     private void agregarSaldo(){
