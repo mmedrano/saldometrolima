@@ -32,7 +32,7 @@ public class Validar {
             resultado = new SMResultado();
             if(SMString.esVacioONulo(credito)){
                 resultado.setMensaje("Debe ingresar el monto a recargar.");
-            }else if(Double.parseDouble(credito) == 0){
+            }else if(Double.parseDouble(credito) == 0 && tipoMovimiento!=MovimientoSaldo.MOV_REESTABLECER_SALDO){
                 resultado.setMensaje("Por favor ingrese un monto válido");
             }else{
                 double montoAValidarMaximo=0;

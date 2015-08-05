@@ -1,9 +1,11 @@
 package com.bitone.saldometro.controller;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -122,10 +124,31 @@ public class ReestablecerSaldoFragment extends Fragment implements View.OnClickL
     }
 
 
+    public void confirmaReestablecer(String monto){
+        if(monto.length()==0){monto="0.00";}
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this.getActivity());
+
+        builder.setMessage("Se actualizará el saldo de su tarjeta a S/."+monto+" ¿Desea continuar?")
+                .setTitle("Marcar viaje")
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
+                    public void onClick(DialogInterface dialog, int id) {
+                        reestablecerSaldo();
+                        dialog.cancel();
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        builder.show();
+    }
+
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btnReestablecer){
-            reestablecerSaldo();
+            confirmaReestablecer(txtSaldoReestablecido.getText().toString());
         }
     }
 }
