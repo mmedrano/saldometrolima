@@ -6,6 +6,7 @@ import com.bitone.saldometro.dao.crud.ParametroDao;
 import com.bitone.saldometro.model.entity.Parametro;
 import com.bitone.saldometro.model.entity.Tarifa;
 import com.bitone.saldometro.model.entity.Tarjeta;
+import com.bitone.saldometro.model.entity.TipoTarjeta;
 import com.bitone.saldometro.utils.CalculaHorario;
 import com.bitone.saldometro.utils.Validar;
 
@@ -22,13 +23,41 @@ public class TarifaBusiness {
     }
 
     public Tarifa obtenerTarifa(Tarjeta tarjetaBase){
+        CalculaHorario calculaHorario = new CalculaHorario();
+
         Tarifa tarifaActual = new Tarifa();
         if(esFeriado()){
             tarifaActual.setMonto(Validar.round(Tarifa.TARIFA_BASE, 2));
             tarifaActual.setFeriado(true);
         }else{
-            tarifaActual.setMonto(Validar.round(tarjetaBase.getTarifa(), 2));
-            tarifaActual.setFeriado(false);
+            String dia=calculaHorario.muestraDiaDeSemana(calculaHorario.obtenerFechaActual("dd-MM-yyyy")).toUpperCase();
+
+            if(tarjetaBase.getTipo().getId()== TipoTarjeta.ADULTO){
+                tarifaActual.setMonto(Validar.round(tarjetaBase.getTarifa(), 2));
+                tarifaActual.setFeriado(false);
+            }
+            else if(tarjetaBase.getTipo().getId()== TipoTarjeta.UNIVERSITARIO){
+                if(dia.equals("DOMINGO")||dia.equals("SUNDAY")){
+                    tarifaActual.setMonto(Validar.round(Tarifa.TARIFA_BASE, 2));
+                    tarifaActual.setFeriado(false);
+                    tarifaActual.setTarifaDoble(true);
+                }
+                else{
+                    tarifaActual.setMonto(Validar.round(tarjetaBase.getTarifa(), 2));
+                    tarifaActual.setFeriado(false);
+                }
+            }
+            else if(tarjetaBase.getTipo().getId()== TipoTarjeta.ESCOLAR){
+                if(dia.equals("DOMINGO")||dia.equals("SUNDAY")||dia.contains("BADO")||dia.equals("SATURDAY")){
+                    tarifaActual.setMonto(Validar.round(Tarifa.TARIFA_BASE, 2));
+                    tarifaActual.setFeriado(false);
+                    tarifaActual.setTarifaDoble(true);
+                }
+                else{
+                    tarifaActual.setMonto(Validar.round(tarjetaBase.getTarifa(), 2));
+                    tarifaActual.setFeriado(false);
+                }
+            }
         }
         return tarifaActual;
     }

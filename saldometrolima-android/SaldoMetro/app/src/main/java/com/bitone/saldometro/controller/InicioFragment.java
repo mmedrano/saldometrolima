@@ -17,6 +17,7 @@ import com.bitone.saldometro.model.business.TarjetaBusiness;
 import com.bitone.saldometro.model.entity.SMResultado;
 import com.bitone.saldometro.model.entity.Tarifa;
 import com.bitone.saldometro.model.entity.Tarjeta;
+import com.bitone.saldometro.utils.CalculaHorario;
 import com.bitone.saldometro.utils.Globales;
 import com.bitone.saldometro.utils.SMPreferences;
 import com.bitone.saldometro.utils.SMString;
@@ -80,8 +81,10 @@ public class InicioFragment extends Fragment implements View.OnClickListener{
                 Tarifa tarifaActual = tarifaBusiness.obtenerTarifa(tarjetaActual);
                 montoTarifa = tarifaActual.getMonto();
 
+                CalculaHorario calculaHorario = new CalculaHorario();
+                String dia=calculaHorario.muestraDiaDeSemana(calculaHorario.obtenerFechaActual("dd-MM-yyyy"));
                 String textoTarifa = "Tarifa: " + Globales.MONEDA + SMString.obtenerFormatoMonto(tarifaActual.getMonto());
-                textoTarifa = textoTarifa + (tarifaActual.esFeriado() ? " (Feriado)" : "");
+                textoTarifa = textoTarifa + (tarifaActual.esFeriado() ? " (Feriado)" : "")+ (tarifaActual.esTarifaDoble() ? " ("+dia+")" : "");
 
                 tvSaldo.setText(SMString.obtenerFormatoMonto(montoSaldo));
                 tvTarjeta.setText(tarjetaActual.getTipo().getNombreTipo());

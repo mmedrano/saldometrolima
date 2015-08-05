@@ -200,7 +200,7 @@ public class CalculaHorario {
         String diaNombre=muestraDiaDeSemana(ddMMyyyy);
         if(diaNombre!=null){
             diaNombre=diaNombre.toUpperCase();
-            if((diaNombre.charAt(0)=='S')||diaNombre.equals("SATURDAY")){//Esto es solo porque no estoy seguro si me devolverá tildes->Sábado || Si está en inglés
+            if((diaNombre.contains("BADO"))||diaNombre.equals("SATURDAY")){//Esto es solo porque no estoy seguro si me devolverá tildes->Sábado || Si está en inglés
                 return FREC_SABADO; // 10 min
             }
             else if(diaNombre.equals("DOMINGO")||diaNombre.equals("SUNDAY")){
