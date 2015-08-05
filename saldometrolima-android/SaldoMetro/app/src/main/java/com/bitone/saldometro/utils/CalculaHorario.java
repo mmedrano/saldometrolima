@@ -38,16 +38,21 @@ public class CalculaHorario {
     //Es lo único que se utilizará
     private String[] salidasABayovar={"6:00","6:02","6:04","6:06","6:08","6:10","6:13","6:15","6:17",
             "6:19","6:22","6:24","6:26","6:29","6:31","6:33","6:35","6:37","6:40","6:42","6:44",
-            "6:46","6:48","6:50","6:55","6:54",};//Se utilizará la misma data a la inversa para la dirección contraria
+            "6:46","6:48","6:50","6:52","6:54",};//Se utilizará la misma data a la inversa para la dirección contraria
+
+    private String[] salidasAVillaSalvador={"6:54","6:52","6:50","6:48","6:46","6:44","6:41","6:39","6:37",
+            "6:35","6:32","6:30","6:28","6:25","6:23","6:21","6:19","6:17","6:14","6:12","6:10",
+            "6:08","6:06","6:04","6:02","6:00",};
 
 
-    public String[] salidasAVillaSalvador(){
+    //DEPRECADO
+    /*public String[] salidasAVillaSalvador_(){
         String[] salidaAVilla= new String[salidasABayovar.length];
         for(int i=salidasABayovar.length-1, j=0; i>=0; i--,j++){
             salidaAVilla[j]=salidasABayovar[i];
         }
         return salidaAVilla;
-    }
+    }*/
 
 
     int frecuenciaTrenes=0;
@@ -69,7 +74,7 @@ public class CalculaHorario {
 
         //
         String primeraSalidaABayovar=salidasABayovar[idEstacion-1];
-        String primeraSalidaAVilla=salidasAVillaSalvador()[idEstacion-1];
+        String primeraSalidaAVilla=salidasAVillaSalvador[idEstacion-1];
 
         HorarioEstacion primerHorarioEstacion= new HorarioEstacion();
         primerHorarioEstacion.setHoraABayovar(primeraSalidaABayovar);
@@ -195,7 +200,7 @@ public class CalculaHorario {
         String diaNombre=muestraDiaDeSemana(ddMMyyyy);
         if(diaNombre!=null){
             diaNombre=diaNombre.toUpperCase();
-            if((diaNombre.charAt(0)=='S')||diaNombre.equals("SATURDAY")){//Esto es solo porque no estoy seguro si me devolverá tildes->Sábado || Si está en inglés
+            if((diaNombre.contains("BADO"))||diaNombre.equals("SATURDAY")){//Esto es solo porque no estoy seguro si me devolverá tildes->Sábado || Si está en inglés
                 return FREC_SABADO; // 10 min
             }
             else if(diaNombre.equals("DOMINGO")||diaNombre.equals("SUNDAY")){

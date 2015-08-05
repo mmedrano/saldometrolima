@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -105,7 +106,7 @@ public class HorarioActivity extends ActionBarActivity {
         LstHorariosAVilla.setAdapter(adaptadorListaHorarioAVillaSalvador);
 
         seteaCursorLista(horasABayovar, LstHorariosABayovar);
-        seteaCursorLista(horasAVilla, LstHorariosAVilla);//LstHorariosABayovar.setb
+        seteaCursorLista(horasAVilla, LstHorariosAVilla);
     }
 
 
@@ -138,18 +139,19 @@ public class HorarioActivity extends ActionBarActivity {
         if(((horaActual>=horaultimaDireccion)&&minutoADireccion>=minutoultimoDireccion)||(horaActual<6)){
             listaHorariosDireccion.setSelection(0);
 
-            if(!horaEncontrada){
-                tvHora.setTextColor(Color.parseColor("#006400"));
+            if(position==0){textViewHoraFormato(tvHora);}
+            /*if(!horaEncontrada){
+                textViewHoraFormato(tvHora);
                 if(direccion.equals("V")){
                     horaEncontradaVilla=true;
                 }
                 else {horaEncontradaBayovar=true;}
-            }
+            }*/
         }
         else{
             if(((horaADireccion>=horaActual)&&minutoADireccion>=minutoActual)||(horaADireccion>horaActual)){
                 if(!horaEncontrada){
-                    tvHora.setTextColor(Color.parseColor("#006400"));
+                    textViewHoraFormato(tvHora);
                     if(direccion.equals("V")){
                         horaEncontradaVilla=true;
                         horaSeleccionadaVilla=horaDireccion[position];
@@ -162,12 +164,12 @@ public class HorarioActivity extends ActionBarActivity {
                 else{
                     if(direccion.equals("V")){
                         if (tvHora.getText().toString().equals(horaSeleccionadaVilla)){
-                            tvHora.setTextColor(Color.parseColor("#006400"));
+                            textViewHoraFormato(tvHora);
                         }
                     }
                     else{
                         if (tvHora.getText().toString().equals(horaSeleccionadaBayovar)){
-                            tvHora.setTextColor(Color.parseColor("#006400"));
+                            textViewHoraFormato(tvHora);
                         }
                     }
                 }
@@ -223,6 +225,11 @@ public class HorarioActivity extends ActionBarActivity {
         else if(idEstacion==26){
             tvDireccionBayovar.setText("Llegada a Bayóvar");
         }
+    }
+
+    public void textViewHoraFormato(TextView textView){
+        textView.setTextColor(Color.parseColor("#006400"));
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
     }
 
     private void cerrar(){

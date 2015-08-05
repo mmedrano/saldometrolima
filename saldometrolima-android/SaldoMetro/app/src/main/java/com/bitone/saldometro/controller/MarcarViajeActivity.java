@@ -1,8 +1,12 @@
 package com.bitone.saldometro.controller;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -86,8 +90,8 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
     public void onClick(View v) {
         if(v.getId()==findViewById(R.id.btnMarcar).getId())
         {
-            marcarViaje();
-
+            //marcarViaje();
+            confirmaMarcar(tvTotalViaje.getText().toString());
         }
         else if(v.getId()==findViewById(R.id.btnMasPersonas).getId()){
             if(numPersonas!=10){
@@ -171,6 +175,27 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
 
         }
 
+    }
+
+
+    public void confirmaMarcar(String monto){
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this);
+
+        builder.setMessage("Se descontará "+monto+" de su tarjeta. ¿Desea continuar?")
+                .setTitle("Marcar viaje")
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
+                    public void onClick(DialogInterface dialog, int id) {
+                        marcarViaje();
+                        dialog.cancel();
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        builder.show();
     }
 
     private void cerrar(){
