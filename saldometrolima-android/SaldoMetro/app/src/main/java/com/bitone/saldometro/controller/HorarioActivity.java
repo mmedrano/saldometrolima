@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bitone.saldometro.model.entity.HorarioEstacion;
 import com.bitone.saldometro.utils.CalculaHorario;
 
 import java.text.SimpleDateFormat;
@@ -87,7 +88,7 @@ public class HorarioActivity extends ActionBarActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String formattedDate = dateFormat.format(c.getTime());
 
-        List<CalculaHorario.HorarioEstacion> calcularHorariosList=calculaHorario.calcularHorarios(idEstacion,formattedDate);
+        List<HorarioEstacion> calcularHorariosList=calculaHorario.calcularHorarios(idEstacion,formattedDate);
         horasABayovar = new String[calcularHorariosList.size()];
         horasAVilla = new String[calcularHorariosList.size()];
 

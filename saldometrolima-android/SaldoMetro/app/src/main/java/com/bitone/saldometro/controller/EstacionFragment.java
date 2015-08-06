@@ -43,8 +43,17 @@ public class EstacionFragment extends Fragment {
 
     public void mostrarHorario(int idEstacion, String estacion) {
         Intent intent = new Intent(this.getActivity(), HorarioActivity.class);
+        intent.putExtra("idEstacion", idEstacion);
+        intent.putExtra("nombreEstacion", estacion);
+        startActivity(intent);
+    }
+
+    public void mostrarInformacion(int idEstacion, String estacion, String distrito, String ubicacion) {
+        Intent intent = new Intent(this.getActivity(), InformacionEstacionActivity.class);
         intent.putExtra("idEstacion",idEstacion);
         intent.putExtra("nombreEstacion", estacion);
+        intent.putExtra("distrito",distrito);
+        intent.putExtra("ubicacion", ubicacion);
         startActivity(intent);
     }
 
@@ -75,12 +84,19 @@ public class EstacionFragment extends Fragment {
             TextView tvEstacion = (TextView)item.findViewById(R.id.tvEstacion);
             tvEstacion.setText(datos[position].getNombreEstacion());
 
-            TextView tvDistrito = (TextView)item.findViewById(R.id.tvDistrito);
+            /*TextView tvDistrito = (TextView)item.findViewById(R.id.tvDistrito);
             tvDistrito.setText(datos[position].getDistrito());
 
             TextView tvUbicacion = (TextView)item.findViewById(R.id.tvUbicacion);
-            tvUbicacion.setText(datos[position].getUbicacion() + "");
+            tvUbicacion.setText(datos[position].getUbicacion() + "");*/
 
+            ImageButton btnInformacion = (ImageButton)item.findViewById(R.id.btnInformacion);
+            btnInformacion.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mostrarInformacion(datos[position].getIdEstacion(),datos[position].getNombreEstacion(), datos[position].getDistrito(), datos[position].getUbicacion());
+                }
+            });
 
             ImageButton btn = (ImageButton)item.findViewById(R.id.btnHorario);
             btn.setOnClickListener(new View.OnClickListener() {

@@ -119,30 +119,35 @@ public class ReestablecerSaldoFragment extends Fragment implements View.OnClickL
                 Toast.makeText(this.getActivity(), resultadoValidacion.getMensaje(), Toast.LENGTH_SHORT).show();
             }
         }catch (Exception ex){
-            Toast.makeText(this.getActivity(), "Ocurrio un error al agregar el monto a reestablecer.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getActivity(), "Ocurrió un error al agregar el monto a reestablecer.", Toast.LENGTH_SHORT).show();
         }
     }
 
 
     public void confirmaReestablecer(String monto){
         if(monto.length()==0){monto="0.00";}
-        AlertDialog.Builder builder =
-                new AlertDialog.Builder(this.getActivity());
+        if(Validar.round(Double.parseDouble(monto), 2)>100){
+            Toast.makeText(this.getActivity(), "Por favor ingrese un monto válido.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            AlertDialog.Builder builder =
+                    new AlertDialog.Builder(this.getActivity());
 
-        builder.setMessage("Se actualizará el saldo de su tarjeta a S/."+monto+" ¿Desea continuar?")
-                .setTitle("Marcar viaje")
-                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
-                    public void onClick(DialogInterface dialog, int id) {
-                        reestablecerSaldo();
-                        dialog.cancel();
-                    }
-                })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        builder.show();
+            builder.setMessage("Se actualizará el saldo de su tarjeta a S/."+monto+" ¿Desea continuar?")
+                    .setTitle("Reestablecer saldo")
+                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
+                        public void onClick(DialogInterface dialog, int id) {
+                            reestablecerSaldo();
+                            dialog.cancel();
+                        }
+                    })
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            builder.show();
+        }
     }
 
     @Override
