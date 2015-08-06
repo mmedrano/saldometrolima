@@ -14,16 +14,14 @@
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
         style="@style/padding">
-
-
         <LinearLayout
-            android:orientation="horizontal"
+            android:background="#de07b209"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:gravity="center_vertical"
-            android:background="#de07b209">
+            android:orientation="horizontal">
             <TextView
                 android:text="@string/saldo"
                 android:layout_width="0dp"
@@ -41,89 +39,88 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 style="@style/TextValorSaldoViaje"
-                android:textSize="30sp"
-                />
+                android:textSize="20sp"/>
         </LinearLayout>
         <View style="@style/Divider"/>
         <LinearLayout
-            android:background="#dc000000"
-            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:orientation="horizontal">
-            <TextView
-                android:text="@string/monto_maximo"
-                android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <LinearLayout
+                android:background="#dc000000"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                style="@style/TextValorSaldoViaje"
-                android:textSize="20sp"
-                />
-            <TextView
-                android:id="@+id/tvMontoMaximo"
-                android:text="@string/tsaldo"
-                android:layout_width="0dp"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:paddingTop="25sp"
+                android:paddingBottom="20sp"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="@string/monto_maximo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    style="@style/TextValorSaldoViaje"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/tvMontoMaximo"
+                    android:text="@string/tsaldo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    style="@style/TextValorSaldoViaje"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="#dc000000"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                style="@style/TextValorSaldoViaje"
-                android:textSize="20sp"
-                />
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:paddingTop="20sp"
+                android:paddingBottom="20sp"
+                android:orientation="horizontal">
+                <TextView
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    style="@style/TextValorSaldoViaje"
+                    android:text="@string/cantidad"
+                    android:textSize="20sp"/>
+                <EditText
+                    android:id="@+id/txtCredito"
+                    android:background="@android:drawable/edit_text"
+                    android:gravity="center"
+                    android:hint="@string/monto"
+                    android:inputType="numberDecimal"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:textSize="20sp"/>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:background="#dc000000"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:orientation="horizontal">
-            <TextView
-                android:text="@string/cantidad"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                style="@style/TextValorSaldoViaje"
-                android:textSize="20sp"
-                />
-            <EditText
-                android:background="@android:drawable/edit_text"
-                android:hint="@string/monto"
-                android:textSize="15sp"
-                android:id="@+id/txtCredito"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:inputType="numberDecimal"
-                />
-        </LinearLayout>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:background="#dc000000"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp">
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
             <Button
                 android:id="@+id/btnAgregar"
                 android:background="@drawable/button_metro"
                 android:text="@string/as"
                 style="@style/buttonStyle"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                />
-
+                android:layout_weight="1"/>
         </LinearLayout>
 
     </LinearLayout>
