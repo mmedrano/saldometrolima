@@ -3,10 +3,11 @@
 
     <string name="titulo_opcion_inicio">Inicio</string>
     <string name="titulo_opcion_elegir_tarjeta">Elegir Tarjeta</string>
-    <string name="titulo_opcion_horario">Horario</string>
+    <string name="titulo_opcion_horario">Horarios</string>
     <string name="titulo_opcion_reestablecer">Reestablecer saldo</string>
     <string name="titulo_opcion_movimientos">Movimientos</string>
     <string name="titulo_opcion_ayuda">Sobre SaldoMetro</string>
+    <string name="titulo_opcion_viajes">Calcular viaje</string>
 
 
     <string name="title_section1">Section 1</string>
@@ -56,5 +57,7 @@
     <string name="title_activity_informacion_estacion">InformacionEstacionActivity</string>
 
 
+    <string name="mensaje_calcularviaje">¿A qué hora realizará su viaje?</string>
+    <string name="hora_viaje">Hora</string>
 
 </resources>

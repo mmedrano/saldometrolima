@@ -67,14 +67,18 @@ public class MainActivity extends ActionBarActivity
                 frgOpcion = new EstacionFragment();
                 break;
             case 3:
+                mTitle = getString(R.string.titulo_opcion_viajes);
+                frgOpcion = new CalcularViajeFragment();
+                break;
+            case 4:
                 mTitle = getString(R.string.titulo_opcion_movimientos);
                 frgOpcion = new MovimientosFragment();
                 break;
-            case 4:
+            case 5:
                 mTitle = getString(R.string.titulo_opcion_reestablecer);
                 frgOpcion = new ReestablecerSaldoFragment();
                 break;
-            case 5:
+            case 6:
                 mTitle = getString(R.string.titulo_opcion_ayuda);
                 frgOpcion = new SobreSaldoMetroFragment();
                 break;

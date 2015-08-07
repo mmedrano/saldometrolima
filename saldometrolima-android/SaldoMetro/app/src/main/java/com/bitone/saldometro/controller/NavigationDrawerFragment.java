@@ -92,6 +92,7 @@ public class NavigationDrawerFragment extends Fragment {
         dataList.add(new DrawerItem(getString(R.string.titulo_opcion_inicio), R.drawable.ic_home_white));
         dataList.add(new DrawerItem(getString(R.string.titulo_opcion_elegir_tarjeta), R.drawable.ic_credit_card_white));
         dataList.add(new DrawerItem(getString(R.string.titulo_opcion_horario), R.drawable.ic_alarm_white));
+        dataList.add(new DrawerItem(getString(R.string.titulo_opcion_viajes), R.drawable.ic_credit_card_white));
         dataList.add(new DrawerItem(getString(R.string.titulo_opcion_movimientos), R.drawable.ic_swap_horiz_white));
         dataList.add(new DrawerItem(getString(R.string.titulo_opcion_reestablecer), R.drawable.ic_settings_backup_restore_white));
         dataList.add(new DrawerItem(getString(R.string.titulo_opcion_ayuda), R.drawable.ic_info_outline_white));
