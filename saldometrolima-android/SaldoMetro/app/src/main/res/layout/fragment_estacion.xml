@@ -11,7 +11,7 @@
         android:layout_weight="1"
         >
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0sp"
             android:layout_height="40sp"
             android:text="ESTACIÓN"
             android:textStyle="bold"
@@ -19,29 +19,20 @@
             android:background="#006400"
             android:gravity="center"
             android:textColor="#FFFFFF"
-            android:layout_weight="1"/>
+            android:layout_weight="3"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0sp"
             android:layout_height="40sp"
-            android:text="DISTRITO"
+            android:text="INFO"
             android:textSize="12sp"
             android:textStyle="bold"
             android:background="#006400"
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:layout_weight="1"/>
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40sp"
-            android:text="UBICACIÓN"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:background="#006400"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0sp"
             android:layout_height="40sp"
             android:text="HORARIO"
             android:textSize="12sp"

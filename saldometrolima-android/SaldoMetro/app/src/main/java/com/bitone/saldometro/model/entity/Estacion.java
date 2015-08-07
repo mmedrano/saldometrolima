@@ -41,4 +41,12 @@ public class Estacion {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
+
+    public Estacion(){}
+    public Estacion(int idEstacion, String nombreEstacion, String distrito, String ubicacion){
+        this.idEstacion = idEstacion;
+        this.nombreEstacion = nombreEstacion;
+        this.distrito = distrito;
+        this.ubicacion = ubicacion;
+    }
 }

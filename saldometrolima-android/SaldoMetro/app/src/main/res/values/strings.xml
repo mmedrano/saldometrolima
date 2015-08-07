@@ -53,6 +53,7 @@
     <string name="sc">Saldo correcto</string>
     <string name="reestablecer">Reestablecer Saldo</string>
     <string name="mensaje_reestablecer">¿El saldo actual de tu tarjeta es incorrecto?</string>
+    <string name="title_activity_informacion_estacion">InformacionEstacionActivity</string>
 
 
 
