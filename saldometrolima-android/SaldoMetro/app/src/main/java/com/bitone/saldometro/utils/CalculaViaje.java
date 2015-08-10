@@ -9,6 +9,9 @@ import java.util.StringTokenizer;
  */
 public class CalculaViaje {
 
+    public static final int ORIGEN_DEFAULT = 0;
+    public static final int DESTINO_DEFAULT = 0;
+
     public List<ViajeEstacion> obtenerCalculoViajes(int idEstacion){
         List <ViajeEstacion> viajeEstacionList = new ArrayList();
         for(int i=0; i<CalculaHorario.SALIDAS_A_BAYOVAR.length; i++){

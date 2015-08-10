@@ -57,7 +57,12 @@
     <string name="title_activity_informacion_estacion">InformacionEstacionActivity</string>
 
 
-    <string name="mensaje_calcularviaje">¿A qué hora realizará su viaje?</string>
+    <string name="mensaje_calcularviaje">¿Cuándo realizará su viaje?</string>
     <string name="hora_viaje">Hora</string>
+
+    <string name="alert_desc1">Hora de espera en la estación</string>
+    <string name="alert_desc2">Próxima llegada del Tren</string>
+    <string name="alert_desc3">Tiempo estimado de viaje</string>
+    <string name="alert_desc4">Hora de llegada al destino</string>
 
 </resources>

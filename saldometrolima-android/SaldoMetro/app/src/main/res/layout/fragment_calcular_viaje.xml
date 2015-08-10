@@ -78,22 +78,24 @@
                 android:paddingTop="25sp"
                 android:paddingBottom="20sp"
                 android:orientation="horizontal">
+                <Button
+                    android:background="@drawable/button_metro"
+                    android:id="@+id/btnDia"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:text="Día"
+                    style="@style/buttonStyle"/>
 
                 <Button
+                    android:background="@drawable/button_metro"
                     android:id="@+id/btnHora"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:text="Hora"/>
-                <TextView
-                    android:id="@+id/tvHoraViaje"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    style="@style/TextValorSaldoViaje"
-                    android:text="@string/hora_viaje"
-                    android:textSize="20sp"/>
+                    android:text="HH:MM"
+                    style="@style/buttonStyle"/>
+
             </LinearLayout>
             <LinearLayout
                 android:background="#dc000000"
@@ -115,12 +117,14 @@
                     style="@style/TextValorSaldoViaje"
                     android:text="Estación origen"
                     android:textSize="15sp"/>
-                <Spinner
-                    android:background="#FFFFFF"
-                    android:layout_width="0dp"
+                <Button
+                    android:background="@drawable/button_metro"
+                    android:id="@+id/btnOrigen"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinnerEstacionOri"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:text="Villa el Salvador"
+                    style="@style/buttonStyle"/>
 
             </LinearLayout>
             <LinearLayout
@@ -143,14 +147,14 @@
                     style="@style/TextValorSaldoViaje"
                     android:text="Estación destino"
                     android:textSize="15sp"/>
-                <TextView
-                    android:gravity="center"
+                <Button
+                    android:background="@drawable/button_metro"
+                    android:id="@+id/btnDestino"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    style="@style/TextValorSaldoViaje"
-                    android:text="@string/hora_viaje"
-                    android:textSize="15sp"/>
+                    android:text="Villa el Salvador"
+                    style="@style/buttonStyle"/>
 
             </LinearLayout>
             <LinearLayout
@@ -165,22 +169,14 @@
                 android:orientation="horizontal">
 
 
-                <TextView
-                    android:gravity="center"
+                <Button
+                    android:background="@drawable/button_metro"
+                    android:id="@+id/btnCalculaViaje"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    style="@style/TextValorSaldoViaje"
-                    android:text="Hora próxima"
-                    android:textSize="15sp"/>
-                <TextView
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    style="@style/TextValorSaldoViaje"
-                    android:text="@string/hora_viaje"
-                    android:textSize="15sp"/>
+                    android:text="Calcular viaje"
+                    style="@style/buttonStyle"/>
 
             </LinearLayout>
 

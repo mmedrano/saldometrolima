@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="estaciones_array">
+        <item>Villa el Salvador</item>
+        <item>Parque Industrial</item>
+        <item>Pumacahua</item>
+        <item>Villa María</item>
+        <item>María Auxiliadora</item>
+        <item>San Juan</item>
+    </string-array>
+</resources>

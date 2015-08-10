@@ -188,7 +188,14 @@ public class CalculaHorario {
     }
 
     public int calculaFrecuencia(String ddMMyyyy){
-        String diaNombre=muestraDiaDeSemana(ddMMyyyy);
+        Validar validar = new Validar();
+        String diaNombre;
+        if(validar.isNumeric(ddMMyyyy.charAt(0)+"")){
+            diaNombre=muestraDiaDeSemana(ddMMyyyy);
+        }
+        else{
+            diaNombre=ddMMyyyy;
+        }
         if(diaNombre!=null){
             diaNombre=diaNombre.toUpperCase();
             if((diaNombre.contains("BADO"))||diaNombre.equals("SATURDAY")){//Esto es solo porque no estoy seguro si me devolverá tildes->Sábado || Si está en inglés
