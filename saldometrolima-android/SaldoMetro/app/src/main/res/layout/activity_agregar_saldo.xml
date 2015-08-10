@@ -48,7 +48,7 @@
             android:orientation="vertical"
             android:layout_weight="1">
             <LinearLayout
-                android:background="#dc000000"
+                android:background="@color/negro_metro_default"
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                     android:textSize="20sp"/>
             </LinearLayout>
             <LinearLayout
-                android:background="#dc000000"
+                android:background="@color/negro_metro_default"
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

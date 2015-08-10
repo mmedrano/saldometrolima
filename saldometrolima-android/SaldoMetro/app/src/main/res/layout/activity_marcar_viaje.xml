@@ -44,7 +44,7 @@
         </LinearLayout>
         <View style="@style/Divider"/>
         <LinearLayout
-            android:background="#dc000000"
+            android:background="@color/negro_metro_default"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
             android:layout_weight="1">
             <Button
                 android:id="@+id/btnMarcar"
-                android:background="@drawable/button_metro"
+                android:background="@drawable/button_metro_red"
                 android:text="@string/marcar"
                 style="@style/buttonStyle"
                 android:layout_width="wrap_content"

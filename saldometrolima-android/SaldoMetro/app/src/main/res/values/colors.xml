@@ -2,6 +2,7 @@
 <resources>
     <color name="fondo_metro">#006400</color>
     <color name="texto_blanco">#FFFFFF</color>
+    <color name="negro_metro_default">#dc000000</color>
 
     <item name="negro" type="color">#000000</item>
     <item name="verdemetro" type="color">#006400</item>
@@ -15,4 +16,5 @@
     <item name="darkgreen" type="color">#FF669900</item>
     <item name="darkorange" type="color">#FFFF8800</item>
     <item name="darkred" type="color">#FFCC0000</item>
+    <item name="yellow" type="color">#FFFFFD53</item>
 </resources>

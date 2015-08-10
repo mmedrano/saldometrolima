@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class HorarioActivity extends ActionBarActivity {
+    private final int COLOR_HORARIO_RESALTADO = R.color.yellow;
+    
     public HorarioActivity() {
         // Required empty public constructor
     }
@@ -232,8 +234,8 @@ public class HorarioActivity extends ActionBarActivity {
         }
     }
 
-    public void textViewHoraFormato(TextView textView){
-        textView.setTextColor(Color.parseColor("#006400"));
+    public void textViewHoraFormato(TextView textView) {
+        textView.setTextColor(getResources().getColor(COLOR_HORARIO_RESALTADO));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
     }
 

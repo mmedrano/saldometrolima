@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         style="@style/padding">
         <TextView
-            android:background="#de07b209"
+            android:background="#006400"
             android:text="Seleccione su tarjeta"
             android:textStyle="bold"
             android:textColor="@color/texto_blanco"
@@ -44,7 +44,8 @@
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/ta"
                 android:textColor="@color/texto_blanco"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@style/RadioButtonMetro"/>
             <ImageView
                 android:src="@drawable/mtarjetdulto"
                 android:layout_width="0sp"
@@ -99,7 +100,8 @@
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/tme"
                 android:textColor="@color/texto_blanco"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                style="@style/RadioButtonMetro"/>
             <ImageView
                 android:layout_height="70sp"
                 android:layout_weight="1"

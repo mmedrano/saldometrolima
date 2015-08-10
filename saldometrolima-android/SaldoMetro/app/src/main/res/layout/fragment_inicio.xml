@@ -130,7 +130,7 @@
                 />
             <Button
                 android:id="@+id/btnMarcarViaje"
-                android:background="@drawable/button_metro"
+                android:background="@drawable/button_metro_red"
                 android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -7,14 +7,13 @@
 
     <LinearLayout
         android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        >
-
-
+        android:layout_weight="1">
         <TextView android:id="@+id/tvDistrito"
-            android:textColor="@color/negro"
+            android:textColor="@color/texto_blanco"
             android:gravity="left"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
@@ -24,7 +23,7 @@
             android:layout_weight="1"/>
 
         <TextView android:id="@+id/tvUbicacion"
-            android:textColor="@color/negro"
+            android:textColor="@color/texto_blanco"
             android:gravity="center"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
@@ -33,10 +32,6 @@
             android:textSize="14sp"
             android:layout_weight="1"/>
 
-
     </LinearLayout>
-
-
-
 
 </LinearLayout>

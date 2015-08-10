@@ -20,12 +20,14 @@
 
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center_vertical"
         >
         <TextView android:id="@+id/tvEstacion"
-            android:textColor="@color/negro"
+            android:textColor="@color/texto_blanco"
             android:gravity="left"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
@@ -39,7 +41,7 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:src="@drawable/abc_ic_search_api_mtrl_alpha"
+            android:src="@drawable/ic_info_outline_white"
             android:layout_weight="1"
             />
 
@@ -48,7 +50,7 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:src="@drawable/abc_ic_search_api_mtrl_alpha"
+            android:src="@drawable/ic_alarm_white"
             android:layout_weight="1"
             />
     </LinearLayout>
