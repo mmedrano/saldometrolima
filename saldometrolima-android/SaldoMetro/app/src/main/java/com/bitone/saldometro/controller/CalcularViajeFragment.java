@@ -262,15 +262,24 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
             minutosEsperandoTren = (calculaHorario.HORA_MINUTOS - minutoEspera) + minutoLlegadaTren;
         }
         StringTokenizer stTiempoEstimado = new StringTokenizer(varTiempoEstimado," ");
-        int minutosTotalViaje=minutosEsperandoTren + Integer.parseInt(stTiempoEstimado.nextToken());
+        int tiempoEstimado=Integer.parseInt(stTiempoEstimado.nextToken());
+        int minutosTotalViaje=minutosEsperandoTren + tiempoEstimado;
 
-        if(minutoEspera+minutosTotalViaje>=calculaHorario.HORA_MINUTOS){
+        /*if(minutoEspera+minutosTotalViaje>=calculaHorario.HORA_MINUTOS){
             varHoraLlegada = horaEspera+1;
             varMinutoLlegada = (minutoEspera+minutosTotalViaje)-calculaHorario.HORA_MINUTOS;
         }
         else{
             varHoraLlegada = horaEspera;
             varMinutoLlegada = minutoEspera+minutosTotalViaje;
+        }*/
+        if(minutoLlegadaTren+tiempoEstimado>=calculaHorario.HORA_MINUTOS){
+            varHoraLlegada = horaLlegadaTren+1;
+            varMinutoLlegada = (minutoLlegadaTren+tiempoEstimado)-calculaHorario.HORA_MINUTOS;
+        }
+        else{
+            varHoraLlegada = horaLlegadaTren;
+            varMinutoLlegada = minutoLlegadaTren+tiempoEstimado;
         }
 
 
