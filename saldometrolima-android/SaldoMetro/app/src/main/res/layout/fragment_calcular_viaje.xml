@@ -192,22 +192,7 @@
                 android:orientation="horizontal">
 
 
-                <TextView
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    style="@style/TextValorSaldoViaje"
-                    android:text="Hora llegada"
-                    android:textSize="15sp"/>
-                <TextView
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    style="@style/TextValorSaldoViaje"
-                    android:text="@string/hora_viaje"
-                    android:textSize="15sp"/>
+
 
             </LinearLayout>
         </LinearLayout>
