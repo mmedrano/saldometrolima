@@ -95,10 +95,18 @@ public class Validar {
         return out;
     }
 
-    public void convierteFormato(String cadena){
-        /*¿ = \u00BF
-ñ = \u0148
-á = \u0227
-é = \u00E9*/
+
+
+    public static boolean isNumeric(String str)
+    {
+        try
+        {
+            double d = Double.parseDouble(str);
+        }
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
     }
 }
