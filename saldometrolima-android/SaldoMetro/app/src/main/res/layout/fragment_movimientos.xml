@@ -1,47 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    style="@style/padding">
-
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo_metro_lima"/>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="MOVIMIENTO"
-            android:textStyle="bold"
-            android:background="#006400"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:layout_weight="2"
-            android:width="0dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="MONTO"
-            android:textStyle="bold"
-            android:background="#006400"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:layout_weight="1"
-            android:width="0dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="FECHA"
-            android:textStyle="bold"
-            android:background="#006400"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:layout_weight="2"
-            android:width="0dp"/>
+        style="@style/padding">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="MOVIMIENTO"
+                android:textStyle="bold"
+                android:background="#006400"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:layout_weight="2"
+                android:width="0dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="MONTO"
+                android:textStyle="bold"
+                android:background="#006400"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:layout_weight="1"
+                android:width="0dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="FECHA"
+                android:textStyle="bold"
+                android:background="#006400"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:layout_weight="2"
+                android:width="0dp"/>
+        </LinearLayout>
+        <ListView
+            android:id="@+id/LstHistorialTarjeta"
+            android:background="@color/negro_metro_default"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
-    <ListView android:id="@+id/LstHistorialTarjeta"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+</FrameLayout>

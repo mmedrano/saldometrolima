@@ -1,56 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    style="@style/padding">
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo_metro_lima"/>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="70sp"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:layout_width="0sp"
-            android:layout_height="40sp"
-            android:text="ESTACIÓN"
-            android:textStyle="bold"
-            android:textSize="12sp"
-            android:background="#006400"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:layout_weight="3"/>
-        <TextView
-            android:layout_width="0sp"
-            android:layout_height="40sp"
-            android:text="INFO"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:background="#006400"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="0sp"
-            android:layout_height="40sp"
-            android:text="HORARIO"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:background="#006400"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        >
-        <ListView android:id="@+id/LstEstaciones"
+        style="@style/padding">
+        <LinearLayout
+            android:background="@color/fondo_metro"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="70sp"
+            android:layout_weight="1"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            >
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:text="ESTACIÓN"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:layout_weight="3"/>
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:text="INFO"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:text="HORARIO"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ListView android:id="@+id/LstEstaciones"
+                android:background="@color/negro_metro_default"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

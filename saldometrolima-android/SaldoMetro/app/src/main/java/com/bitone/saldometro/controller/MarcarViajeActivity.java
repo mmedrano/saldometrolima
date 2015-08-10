@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.bitone.saldometro.model.business.MovimientoSaldoBusiness;
 import com.bitone.saldometro.model.entity.MovimientoSaldo;
+import com.bitone.saldometro.model.entity.Tarifa;
 import com.bitone.saldometro.model.entity.Tarjeta;
 import com.bitone.saldometro.model.entity.TipoMovimiento;
 import com.bitone.saldometro.model.entity.TipoTarjeta;
@@ -28,8 +29,6 @@ import com.bitone.saldometro.utils.Validar;
 
 
 public class MarcarViajeActivity extends ActionBarActivity implements  View.OnClickListener{
-
-
     int numPersonas;
     double saldoActual, tarifa, totalViaje, saldoRestante;
     SMPreferences preferences;
@@ -88,13 +87,15 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==findViewById(R.id.btnMarcar).getId())
-        {
-            //marcarViaje();
-            confirmaMarcar(tvTotalViaje.getText().toString());
+        if(v.getId()==findViewById(R.id.btnMarcar).getId()){
+            if (saldoRestante < 0){
+                Toast.makeText(this, "Es necesario realizar una recarga para efectuar esta operación", Toast.LENGTH_SHORT).show();
+            }else{
+                confirmaMarcar(tvTotalViaje.getText().toString());
+            }
         }
         else if(v.getId()==findViewById(R.id.btnMasPersonas).getId()){
-            if(numPersonas!=10){
+            if(numPersonas != Tarifa.MAXIMO_PERSONAS_VIAJE){
                 numPersonas++;
                 calcularViaje();
             }
@@ -113,16 +114,16 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
         saldoActual = Validar.round(saldoActual, 2);
         tvSaldoActual.setText(Globales.MONEDA + SMString.obtenerFormatoMonto(saldoActual));
 
-        tarifa=this.getIntent().getExtras().getDouble(Globales.EXTRA_TARIFA_ACTUAL);
+        tarifa = this.getIntent().getExtras().getDouble(Globales.EXTRA_TARIFA_ACTUAL);
         tarifa = Validar.round(tarifa, 2);
 
         numPersonas = Integer.parseInt(txtPersonas.getText().toString());
 
-        totalViaje=Validar.round((tarifa*numPersonas),2);
-        tvTotalViaje.setText("S/."+(totalViaje));
+        totalViaje = Validar.round((tarifa * numPersonas), 2);
+        tvTotalViaje.setText(Globales.MONEDA + SMString.obtenerFormatoMonto(totalViaje));
 
-        saldoRestante=Validar.round((saldoActual-tarifa),2);
-        tvSaldoRestante.setText("S/."+saldoRestante);
+        saldoRestante = Validar.round((saldoActual - tarifa), 2);
+        tvSaldoRestante.setText(Globales.MONEDA + SMString.obtenerFormatoMonto(saldoRestante));
     }
 
     public void validarMumPersonas(){
@@ -140,41 +141,33 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
     public void calcularViaje(){
         txtPersonas.setText(numPersonas+"");
 
-        totalViaje=Validar.round((tarifa * numPersonas), 2);
-        saldoRestante=Validar.round((saldoActual-totalViaje),2);
-        tvTotalViaje.setText("S/." + (totalViaje));
-        tvSaldoRestante.setText("S/."+(saldoRestante));
+        totalViaje = Validar.round((tarifa * numPersonas), 2);
+        saldoRestante = Validar.round((saldoActual - totalViaje),2);
+        tvTotalViaje.setText(Globales.MONEDA + SMString.obtenerFormatoMonto(totalViaje));
+        tvSaldoRestante.setText(Globales.MONEDA+ SMString.obtenerFormatoMonto(saldoRestante));
     }
 
     public void marcarViaje(){
-        if (saldoRestante<0){
-            Toast.makeText(this, "Es necesario realizar una recarga para efectuar esta operacion", Toast.LENGTH_SHORT).show();
-        }
-        else{
+        //Movimiento Saldo
+        MovimientoSaldo movimientoSaldo= new MovimientoSaldo();
+        movimientoSaldo.setCantidadPersonas(numPersonas);
 
-            //Movimiento Saldo
-            MovimientoSaldo movimientoSaldo= new MovimientoSaldo();
-            movimientoSaldo.setCantidadPersonas(numPersonas);
+        CalculaHorario calculaHorario = new CalculaHorario();
+        movimientoSaldo.setFechaMovimiento(calculaHorario.obtenerFechaActual("dd-MMM-yyyy hh:mm a"));
 
-            CalculaHorario calculaHorario = new CalculaHorario();
-            movimientoSaldo.setFechaMovimiento(calculaHorario.obtenerFechaActual("dd-MMM-yyyy hh:mm a"));
+        movimientoSaldo.setIdTarjeta(preferences.obtenerTarjetaSeleccionada());
+        movimientoSaldo.setIdTipoMovimiento(MovimientoSaldo.MOV_MARCAR_VIAJE);
+        movimientoSaldo.setMonto(totalViaje);
 
-            movimientoSaldo.setIdTarjeta(preferences.obtenerTarjetaSeleccionada());
-            movimientoSaldo.setIdTipoMovimiento(MovimientoSaldo.MOV_MARCAR_VIAJE);
-            movimientoSaldo.setMonto(totalViaje);
+        //Tarjeta a actualizar
+        Tarjeta tarjetaActualizada= new Tarjeta();
+        tarjetaActualizada.setId(preferences.obtenerTarjetaSeleccionada());
+        tarjetaActualizada.setSaldo(Validar.round((saldoActual - totalViaje), 2));
 
-            //Tarjeta a actualizar
-            Tarjeta tarjetaActualizada= new Tarjeta();
-            tarjetaActualizada.setId(preferences.obtenerTarjetaSeleccionada());
-            tarjetaActualizada.setSaldo(Validar.round((saldoActual - totalViaje), 2));
-
-            MovimientoSaldoBusiness movimientoSaldoBusiness= new MovimientoSaldoBusiness(this.getApplicationContext());
-            String resultado=movimientoSaldoBusiness.marcarViaje(movimientoSaldo, tarjetaActualizada).getMensaje();
-            Toast.makeText(this,resultado , Toast.LENGTH_SHORT).show();
-            finish();
-
-        }
-
+        MovimientoSaldoBusiness movimientoSaldoBusiness= new MovimientoSaldoBusiness(this.getApplicationContext());
+        String resultado=movimientoSaldoBusiness.marcarViaje(movimientoSaldo, tarjetaActualizada).getMensaje();
+        Toast.makeText(this,resultado , Toast.LENGTH_SHORT).show();
+        finish();
     }
 
 
@@ -182,7 +175,7 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this);
 
-        builder.setMessage("Se descontará "+monto+" de su tarjeta. ¿Desea continuar?")
+        builder.setMessage("Se descontará " + monto + " de su tarjeta. ¿Desea continuar?")
                 .setTitle("Marcar viaje")
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
                     public void onClick(DialogInterface dialog, int id) {

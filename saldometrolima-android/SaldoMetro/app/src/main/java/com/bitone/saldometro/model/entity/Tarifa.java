@@ -2,6 +2,7 @@ package com.bitone.saldometro.model.entity;
 
 public class Tarifa {
     public static double TARIFA_BASE = 1.50;
+    public static int MAXIMO_PERSONAS_VIAJE = 10;
 
     private boolean feriado;
     private boolean tarifaDoble=false;

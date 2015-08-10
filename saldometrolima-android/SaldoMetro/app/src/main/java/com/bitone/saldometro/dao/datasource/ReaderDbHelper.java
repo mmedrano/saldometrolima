@@ -30,8 +30,9 @@ public class ReaderDbHelper extends SQLiteOpenHelper {
 
         db.execSQL("insert into " + ParametroDataSource.PARAMETRO_TABLE_NAME + " VALUES (1, 'PASAJEADULTO', '1.50','Tarifa de la tarjeta adulto');");
         db.execSQL("insert into " + ParametroDataSource.PARAMETRO_TABLE_NAME + " VALUES (2,'PASAJEMEDIO','0.75','Tarifa de la tarjeta de medio pasaje');");
-        db.execSQL("insert into " + ParametroDataSource.PARAMETRO_TABLE_NAME + " VALUES (3,'FERIADOS','01/01','Ano Nuevo');");
-        db.execSQL("insert into " + ParametroDataSource.PARAMETRO_TABLE_NAME + " VALUES (5,'FERIADOS','24/06','Inti Raymi (Fiesta Inca del Sol)');");
+        db.execSQL("insert into " + ParametroDataSource.PARAMETRO_TABLE_NAME + " VALUES (3,'FERIADOS','01/01','Año Nuevo');");
+        db.execSQL("insert into " + ParametroDataSource.PARAMETRO_TABLE_NAME + " VALUES (4,'FERIADOS','01/05','Día del Trabajo');");
+        //db.execSQL("insert into " + ParametroDataSource.PARAMETRO_TABLE_NAME + " VALUES (5,'FERIADOS','24/06','Inti Raymi (Fiesta Inca del Sol)');");
         db.execSQL("insert into " + ParametroDataSource.PARAMETRO_TABLE_NAME + " VALUES (6,'FERIADOS','29/06','Festividad de San Pedro y San Pablo');");
         db.execSQL("insert into " + ParametroDataSource.PARAMETRO_TABLE_NAME + " VALUES (7,'FERIADOS','28/07','Fiesta de la Independecia Nacional');");
         db.execSQL("insert into " + ParametroDataSource.PARAMETRO_TABLE_NAME + " VALUES (8,'FERIADOS','29/07','Fiesta de la Independecia Nacional(2)');");
