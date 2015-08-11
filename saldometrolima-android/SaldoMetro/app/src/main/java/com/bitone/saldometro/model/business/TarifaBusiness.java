@@ -23,7 +23,7 @@ public class TarifaBusiness {
     }
 
     public Tarifa obtenerTarifa(Tarjeta tarjetaBase){
-        CalculaHorario calculaHorario = new CalculaHorario();
+        CalculaHorario calculaHorario = new CalculaHorario(context);
 
         Tarifa tarifaActual = new Tarifa();
         if(esFeriado()){
@@ -76,7 +76,7 @@ public class TarifaBusiness {
         ParametroDao parametroDao = new ParametroDao(context);
         List<Parametro> lstParametros = parametroDao.obtenerParametros(Parametro.FERIADO);
 
-        CalculaHorario calculaHorario = new CalculaHorario();
+        CalculaHorario calculaHorario = new CalculaHorario(context);
         String fechaActual = calculaHorario.obtenerFechaActual("dd/MM");
 
         for(Parametro prm : lstParametros){

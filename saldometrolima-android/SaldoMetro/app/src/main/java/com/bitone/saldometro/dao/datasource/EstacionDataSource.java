@@ -20,6 +20,7 @@ public class EstacionDataSource {
         public static final String NOMBRE_ESTACION= "nombre";
         public static final String DISTRITO_ESTACION= "distrito";
         public static final String UBICACION_ESTACION= "ubicacion";
+        public static final String COORDENADA= "coordenada";
     }
 
     //Script de Creación de Estacion
@@ -28,7 +29,8 @@ public class EstacionDataSource {
                     ColumnQuotes.ID_ESTACION+" "+INT_TYPE+" primary key autoincrement," +
                     ColumnQuotes.NOMBRE_ESTACION+" "+STRING_TYPE+" not null," +
                     ColumnQuotes.DISTRITO_ESTACION+" "+STRING_TYPE+" not null," +
-                    ColumnQuotes.UBICACION_ESTACION+" "+STRING_TYPE+" not null)";
+                    ColumnQuotes.UBICACION_ESTACION+" "+STRING_TYPE+" not null," +
+                    ColumnQuotes.COORDENADA+" "+STRING_TYPE+" not null)";
 
     //Scripts de inserción por defecto
     public static final String INSERT_ESTACION_SCRIPT =

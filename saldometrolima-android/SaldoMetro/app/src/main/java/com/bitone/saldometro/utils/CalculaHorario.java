@@ -1,6 +1,10 @@
 package com.bitone.saldometro.utils;
 
+import android.content.Context;
+
+import com.bitone.saldometro.dao.crud.ParametroDao;
 import com.bitone.saldometro.model.entity.HorarioEstacion;
+import com.bitone.saldometro.model.entity.Parametro;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,7 +17,7 @@ import java.util.StringTokenizer;
  * Created by Christian Medrano on 25/07/2015.
  */
 public class CalculaHorario {
-
+    private Context context;
     /*Datos
     *
     * 26 estaciones
@@ -28,7 +32,7 @@ public class CalculaHorario {
 
         tiempo entre salida de tren 6-10 min L-V, 10 min Sab, 14 min Dom
     * */
-    public static final int FREC_DOMINGO = 14;
+    public static final int FREC_DOMINGO_Y_FERIADO = 14;
     public static final int FREC_SABADO = 10;
     public static final int FREC_L_V = 8;
 
@@ -65,7 +69,7 @@ public class CalculaHorario {
         else if(frecuenciaTrenes==FREC_SABADO){
             viajesAlDiaTotal=TOTALVIAJES_SABADO;
         }
-        else if(frecuenciaTrenes==FREC_DOMINGO){
+        else if(frecuenciaTrenes==FREC_DOMINGO_Y_FERIADO){
             viajesAlDiaTotal=TOTALVIAJES_DOMINGO;
         }
         /*else{
@@ -205,26 +209,26 @@ public class CalculaHorario {
     }
 
     public int calculaFrecuencia(String ddMMyyyy){
-        Validar validar = new Validar();
-        String diaNombre;
-        if(validar.isNumeric(ddMMyyyy.charAt(0)+"")){
-            diaNombre=muestraDiaDeSemana(ddMMyyyy);
+        if(esFeriado(ddMMyyyy)){
+            return FREC_DOMINGO_Y_FERIADO;
         }
+
         else{
-            diaNombre=ddMMyyyy;
-        }
-        if(diaNombre!=null){
-            diaNombre=diaNombre.toUpperCase();
-            if((diaNombre.contains("BADO"))||diaNombre.equals("SATURDAY")){//Esto es solo porque no estoy seguro si me devolverá tildes->Sábado || Si está en inglés
-                return FREC_SABADO; // 10 min
+            String diaNombre=muestraDiaDeSemana(ddMMyyyy);
+
+            if(diaNombre!=null){
+                diaNombre=diaNombre.toUpperCase();
+                if((diaNombre.contains("BADO"))||diaNombre.equals("SATURDAY")){//Esto es solo porque no estoy seguro si me devolverá tildes->Sábado || Si está en inglés
+                    return FREC_SABADO; // 10 min
+                }
+                else if(diaNombre.equals("DOMINGO")||diaNombre.equals("SUNDAY")){
+                    return FREC_DOMINGO_Y_FERIADO; // 14 min
+                }
+                else return FREC_L_V;
             }
-            else if(diaNombre.equals("DOMINGO")||diaNombre.equals("SUNDAY")){
-                return FREC_DOMINGO; // 14 min
+            else{
+                return FREC_L_V;
             }
-            else return FREC_L_V;
-        }
-        else{
-            return FREC_L_V;
         }
     }
 
@@ -236,7 +240,27 @@ public class CalculaHorario {
         return formattedDate;
     }
 
+    public boolean esFeriado(String ddMMfechaViaje){
+        boolean feriado = false;
+        ParametroDao parametroDao = new ParametroDao(context);
+        List<Parametro> lstParametros = parametroDao.obtenerParametros(Parametro.FERIADO);
+        StringTokenizer stFechaViaje = new StringTokenizer(ddMMfechaViaje,"-/");
+        String fechaViaje=stFechaViaje.nextToken()+"/"+stFechaViaje.nextToken();
+
+        for(Parametro prm : lstParametros){
+            if(prm.getParametro().equals(fechaViaje)){
+                feriado = true;
+                break;
+            }
+        }
+
+        return feriado;
+    }
 
 
+
+    public CalculaHorario(Context context){
+        this.context=context;
+    }
 
 }

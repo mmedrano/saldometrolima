@@ -9,6 +9,7 @@ public class Estacion {
     private String nombreEstacion;
     private String distrito;
     private String ubicacion;
+    private String coordenada;
 
     public int getIdEstacion() {
         return idEstacion;
@@ -42,11 +43,18 @@ public class Estacion {
         this.ubicacion = ubicacion;
     }
 
+    public String getCoordenada() {return coordenada;}
+
+    public void setCoordenada(String coordenada) {this.coordenada = coordenada;}
+
     public Estacion(){}
-    public Estacion(int idEstacion, String nombreEstacion, String distrito, String ubicacion){
+    public Estacion(int idEstacion, String nombreEstacion, String distrito, String ubicacion, String coordenada){
         this.idEstacion = idEstacion;
         this.nombreEstacion = nombreEstacion;
         this.distrito = distrito;
         this.ubicacion = ubicacion;
+        this.coordenada = coordenada;
     }
+
+
 }

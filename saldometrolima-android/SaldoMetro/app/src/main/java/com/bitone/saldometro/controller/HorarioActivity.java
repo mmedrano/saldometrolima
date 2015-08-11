@@ -81,7 +81,7 @@ public class HorarioActivity extends ActionBarActivity {
 
 
     public void cargarDatos(){
-        CalculaHorario calculaHorario= new CalculaHorario();
+        CalculaHorario calculaHorario= new CalculaHorario(this.getApplicationContext());
         int idEstacion=this.getIntent().getExtras().getInt("idEstacion");
         esTerminal(idEstacion);
 
@@ -139,17 +139,10 @@ public class HorarioActivity extends ActionBarActivity {
         int horaultimaDireccion=Integer.parseInt(stDireccionUltimo.nextToken());
         int minutoultimoDireccion=Integer.parseInt((stDireccionUltimo.nextToken()));
 
-        if(((horaActual>=horaultimaDireccion)&&minutoADireccion>=minutoultimoDireccion)||(horaActual<6)){
+        if(((horaActual>horaultimaDireccion))||((horaActual==horaultimaDireccion)&&minutoActual>minutoultimoDireccion)||(horaActual<6)){
             listaHorariosDireccion.setSelection(0);
 
             if(position==0){textViewHoraFormato(tvHora);}
-            /*if(!horaEncontrada){
-                textViewHoraFormato(tvHora);
-                if(direccion.equals("V")){
-                    horaEncontradaVilla=true;
-                }
-                else {horaEncontradaBayovar=true;}
-            }*/
         }
         else{
             if(((horaADireccion>=horaActual)&&minutoADireccion>=minutoActual)||(horaADireccion>horaActual)){

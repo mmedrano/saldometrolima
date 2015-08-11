@@ -101,7 +101,7 @@ public class ReestablecerSaldoFragment extends Fragment implements View.OnClickL
 
             MovimientoSaldo movimientoSaldo = new MovimientoSaldo();
             movimientoSaldo.setCantidadPersonas(0);
-            CalculaHorario calculaHorario = new CalculaHorario();
+            CalculaHorario calculaHorario = new CalculaHorario(this.getActivity().getApplicationContext());
             movimientoSaldo.setFechaMovimiento(calculaHorario.obtenerFechaActual("dd-MMM-yyyy h:mm a"));
 
             movimientoSaldo.setIdTarjeta(preferences.obtenerTarjetaSeleccionada());

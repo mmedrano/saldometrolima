@@ -20,7 +20,7 @@ import com.bitone.saldometro.utils.SMPreferences;
 import java.util.List;
 
 public class MovimientosFragment extends Fragment {
-   public MovimientosFragment() {
+    public MovimientosFragment() {
         // Required empty public constructor
     }
 

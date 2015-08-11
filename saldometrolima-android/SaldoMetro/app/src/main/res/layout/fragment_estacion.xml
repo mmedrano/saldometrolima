@@ -52,6 +52,15 @@
                 android:gravity="center"
                 android:textColor="#FFFFFF"
                 android:layout_weight="1"/>
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:text="MAPA"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:layout_weight="1"/>
         </LinearLayout>
 
         <LinearLayout

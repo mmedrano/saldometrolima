@@ -57,6 +57,14 @@ public class EstacionFragment extends Fragment {
         startActivity(intent);
     }
 
+    public void mostrarMapa(int idEstacion, String estacion, String coordenada) {
+        Intent intent = new Intent(this.getActivity(), EstacionMapsActivity.class);
+        intent.putExtra("idEstacion",idEstacion);
+        intent.putExtra("nombreEstacion", estacion);
+        intent.putExtra("coordenada",coordenada);
+        startActivity(intent);
+    }
+
     public void cargarDatos(){
         EstacionBusiness estacionBusiness= new EstacionBusiness();
         List<Estacion> estacionList=estacionBusiness.obtenerEstaciones(this.getActivity().getApplicationContext(),this.getActivity().MODE_PRIVATE);
@@ -84,17 +92,11 @@ public class EstacionFragment extends Fragment {
             TextView tvEstacion = (TextView)item.findViewById(R.id.tvEstacion);
             tvEstacion.setText(datos[position].getNombreEstacion());
 
-            /*TextView tvDistrito = (TextView)item.findViewById(R.id.tvDistrito);
-            tvDistrito.setText(datos[position].getDistrito());
-
-            TextView tvUbicacion = (TextView)item.findViewById(R.id.tvUbicacion);
-            tvUbicacion.setText(datos[position].getUbicacion() + "");*/
-
             ImageButton btnInformacion = (ImageButton)item.findViewById(R.id.btnInformacion);
             btnInformacion.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mostrarInformacion(datos[position].getIdEstacion(),datos[position].getNombreEstacion(), datos[position].getDistrito(), datos[position].getUbicacion());
+                    mostrarInformacion(datos[position].getIdEstacion(), datos[position].getNombreEstacion(), datos[position].getDistrito(), datos[position].getUbicacion());
                 }
             });
 
@@ -102,7 +104,15 @@ public class EstacionFragment extends Fragment {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mostrarHorario(datos[position].getIdEstacion(),datos[position].getNombreEstacion());
+                    mostrarHorario(datos[position].getIdEstacion(), datos[position].getNombreEstacion());
+                }
+            });
+
+            ImageButton btnMapa = (ImageButton)item.findViewById(R.id.btnMapa);
+            btnMapa.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mostrarMapa(datos[position].getIdEstacion(), datos[position].getNombreEstacion(), datos[position].getCoordenada());
                 }
             });
             return(item);
