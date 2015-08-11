@@ -81,7 +81,7 @@ public class InicioFragment extends Fragment implements View.OnClickListener{
                 Tarifa tarifaActual = tarifaBusiness.obtenerTarifa(tarjetaActual);
                 montoTarifa = tarifaActual.getMonto();
 
-                CalculaHorario calculaHorario = new CalculaHorario();
+                CalculaHorario calculaHorario = new CalculaHorario(this.getActivity().getApplicationContext());
                 String dia=calculaHorario.muestraDiaDeSemana(calculaHorario.obtenerFechaActual("dd-MM-yyyy"));
                 String textoTarifa = "Tarifa: " + Globales.MONEDA + SMString.obtenerFormatoMonto(tarifaActual.getMonto());
                 textoTarifa = textoTarifa + (tarifaActual.esFeriado() ? " (Feriado)" : "")+ (tarifaActual.esTarifaDoble() ? " ("+dia+")" : "");

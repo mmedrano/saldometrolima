@@ -50,7 +50,7 @@ public class ParametroDao {
 
             parametroList.add(parametro);
         }
-
+        db.close();
 
         return parametroList;
     }

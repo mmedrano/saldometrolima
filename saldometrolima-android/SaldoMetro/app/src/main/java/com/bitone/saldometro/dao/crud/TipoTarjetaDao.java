@@ -38,10 +38,9 @@ public class TipoTarjetaDao {
 
             //tarjetaList.add(tipoTarjeta);
         }
+        db.close();
         return tipoTarjeta;
     }
 
-    public void actualizar(Tarjeta tarjetaModificada){
 
-    }
 }

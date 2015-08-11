@@ -1,6 +1,7 @@
 package com.bitone.saldometro.controller;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -51,6 +53,9 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
     }
 
     Button  btnDia, btnHora, btnDestino, btnOrigen, btnCalculaViaje;
+    private DatePickerDialog ViajeDatePickerDialog;
+    private SimpleDateFormat formatoDia;
+
     Context activity;
     int origen, destino;
     String dia="";
@@ -77,6 +82,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         btnDestino = (Button)rootView.findViewById(R.id.btnDestino);
         btnCalculaViaje = (Button)rootView.findViewById(R.id.btnCalculaViaje);
 
+        formatoDia = new SimpleDateFormat("dd-MM-yyyy");
 
 
         origen = CalculaViaje.ORIGEN_DEFAULT;
@@ -87,7 +93,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         btnDestino.setOnClickListener(this);
         btnOrigen.setOnClickListener(this);
         btnCalculaViaje.setOnClickListener(this);
-
+        setDateTimeField();
 
 
         cargarDatos();
@@ -105,7 +111,8 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
             establecerHora();
         }
         else if(v.getId() == R.id.btnDia){
-            elegirDia();
+            //elegirDia();
+            ViajeDatePickerDialog.show();
         }
         else if(v.getId() == R.id.btnOrigen){
             elegirEstacion("Origen");
@@ -159,25 +166,6 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         b.show();
     }
 
-    public void elegirDia(){
-        final String dias []= {"Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"};
-        AlertDialog.Builder builderDia = new AlertDialog.Builder(this.getActivity());
-        builderDia.setTitle("Día");
-
-        builderDia.setItems(dias, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                dialog.dismiss();
-                btnDia.setText(dias[which]);
-                dia=dias[which].toUpperCase();
-            }
-        });
-
-        builderDia.show();
-    }
-
 
     public void muestraCalculo(){
         AlertDialog.Builder builder =
@@ -203,12 +191,8 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         TextView tvHoraLlegada = (TextView)dialoglayout.findViewById(R.id.tvHoraLlegada);
 
         //Calculando horarios
-        CalculaHorario calculaHorario= new CalculaHorario();
-        /*Calendar c = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String formattedDate = dateFormat.format(c.getTime());//obtengo la fecha*/
-
-        List<HorarioEstacion> calcularHorariosList=calculaHorario.calcularHorarios(origen+1,dia);
+        CalculaHorario calculaHorario= new CalculaHorario(activity.getApplicationContext());
+        List<HorarioEstacion> calcularHorariosList=calculaHorario.calcularHorarios(origen+1,btnDia.getText().toString());
 
         horasABayovar = new String[calcularHorariosList.size()];
         horasAVilla = new String[calcularHorariosList.size()];
@@ -327,7 +311,39 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
 
 
 
+    private void setDateTimeField() {
 
+        Calendar newCalendar = Calendar.getInstance();
+        ViajeDatePickerDialog = new DatePickerDialog(activity, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                btnDia.setText(formatoDia.format(newDate.getTime()));
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+    }
+
+    //Metodo deprecado
+    public void elegirDia(){
+        final String dias []= {"Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"};
+        AlertDialog.Builder builderDia = new AlertDialog.Builder(this.getActivity());
+        builderDia.setTitle("Día");
+
+        builderDia.setItems(dias, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.dismiss();
+                btnDia.setText(dias[which]);
+                dia=dias[which].toUpperCase();
+            }
+        });
+
+        builderDia.show();
+    }
 
     //Si se utilizara un ListView
     class AdaptadorViaje extends ArrayAdapter<Viaje> {

@@ -40,10 +40,11 @@ public class EstacionDao {
             estacion.setNombreEstacion(c.getString(1));
             estacion.setDistrito(c.getString(2));
             estacion.setUbicacion(c.getString(3));
+            estacion.setCoordenada(c.getString(4));
 
             estacionList.add(estacion);
         }
-
+        db.close();
 
         return estacionList;
     }

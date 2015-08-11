@@ -152,7 +152,7 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
         MovimientoSaldo movimientoSaldo= new MovimientoSaldo();
         movimientoSaldo.setCantidadPersonas(numPersonas);
 
-        CalculaHorario calculaHorario = new CalculaHorario();
+        CalculaHorario calculaHorario = new CalculaHorario(this.getApplicationContext());
         movimientoSaldo.setFechaMovimiento(calculaHorario.obtenerFechaActual("dd-MMM-yyyy hh:mm a"));
 
         movimientoSaldo.setIdTarjeta(preferences.obtenerTarjetaSeleccionada());

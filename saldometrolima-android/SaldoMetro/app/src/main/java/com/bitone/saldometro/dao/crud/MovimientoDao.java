@@ -31,13 +31,17 @@ public class MovimientoDao {
 
         //Insertando en la base de datos
         db.insert("MovimientoSaldo",null,values);
+        db.close();
+    }
+
+    public void eliminarMovimientos(){
+        //String selection = " Column = ?";
+        //String[] selectionArgs = { "3" };
+        TarjetaDataSource dataSource = new TarjetaDataSource(context);
+        SQLiteDatabase db = context.openOrCreateDatabase(Globales.DBNAME, Context.MODE_PRIVATE, null);
+        db.delete("MovimientoSaldo", null, null);
+        db.close();
     }
 
 
-
-
-    public void actualizar(Context context, int mode, MovimientoSaldo movimientoModificado){
-
-
-    }
 }

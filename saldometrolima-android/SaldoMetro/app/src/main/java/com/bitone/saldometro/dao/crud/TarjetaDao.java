@@ -45,6 +45,7 @@ public class TarjetaDao {
             TipoTarjetaDao ttd= new TipoTarjetaDao();
             tarjeta.setTipo(ttd.obtener(db, c.getInt(3)));;
         }
+        db.close();
         return tarjeta;
     }
 
@@ -64,6 +65,7 @@ public class TarjetaDao {
 
         //Actualizando
         db.update("Tarjeta", values, selection, selectionArgs);
+        db.close();
     }
 
 
@@ -80,7 +82,7 @@ public class TarjetaDao {
         String MY_QUERY = "SELECT tipta.tipoTarjeta, tipmov.tipoMovimiento, ms.monto, ms.fechaMovimiento FROM Tarjeta ta " +
                 "INNER JOIN TipoTarjeta tipta ON ta.idTipoTarjeta=tipta.idTipoTarjeta INNER JOIN" +
                 " MovimientoSaldo ms ON ta.idTarjeta=ms.idTarjeta INNER JOIN TipoMovimiento tipmov ON " +
-                "ms.idTipoMovimiento=tipmov.idTipoMovimiento WHERE ta.idTarjeta=?";
+                "ms.idTipoMovimiento=tipmov.idTipoMovimiento WHERE ta.idTarjeta=? order by ms.idMovimientoSaldo desc";
 
         Cursor c = db.rawQuery(MY_QUERY, args);
 
@@ -99,6 +101,7 @@ public class TarjetaDao {
                 historiaTarjetaList.add(historiaTarjeta);
             } while(c.moveToNext());
         }
+        db.close();
         return historiaTarjetaList;
     }
 }
