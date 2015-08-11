@@ -64,5 +64,6 @@
     <string name="alert_desc2">Próxima llegada del Tren</string>
     <string name="alert_desc3">Tiempo estimado de viaje</string>
     <string name="alert_desc4">Hora de llegada al destino</string>
+    <string name="title_activity_estacion_maps">Map</string>
 
 </resources>

@@ -36,6 +36,8 @@ public class CalculaHorario {
     public static final int HORA_MINUTOS = 60; // 1hr <> 60 min
 
     public static final int TOTALVIAJES_L_V = 120; // 120 viajes solo días L - V
+    public static final int TOTALVIAJES_SABADO = 96; // 120 viajes solo días L - V
+    public static final int TOTALVIAJES_DOMINGO = 69; // 120 viajes solo días L - V
 
     //Es lo único que se utilizará
     public static final String[] SALIDAS_A_BAYOVAR={"6:00","6:02","6:04","6:06","6:08","6:10","6:13","6:15","6:17",
@@ -60,9 +62,15 @@ public class CalculaHorario {
         if(frecuenciaTrenes==FREC_L_V){
             viajesAlDiaTotal=TOTALVIAJES_L_V;
         }
-        else{
-            viajesAlDiaTotal=MINS_SERVICIO/frecuenciaTrenes;
+        else if(frecuenciaTrenes==FREC_SABADO){
+            viajesAlDiaTotal=TOTALVIAJES_SABADO;
         }
+        else if(frecuenciaTrenes==FREC_DOMINGO){
+            viajesAlDiaTotal=TOTALVIAJES_DOMINGO;
+        }
+        /*else{
+            viajesAlDiaTotal=MINS_SERVICIO/frecuenciaTrenes;
+        }*/
 
         String primeraSalidaABayovar=SALIDAS_A_BAYOVAR[idEstacion-1];
         String primeraSalidaAVilla=SALIDAS_A_VILLASALVADOR[idEstacion-1];
@@ -86,6 +94,7 @@ public class CalculaHorario {
             String nuevaHoraAVillaSalvador="";
             
             if(viajesAlDiaTotal==TOTALVIAJES_L_V){frecuenciasDiaParticularABayovar(i);}// Calcula la frecuencia variable: Si es L-V
+            else if(viajesAlDiaTotal==TOTALVIAJES_DOMINGO){frecuenciasDiaDomingo(i);}
 
             if(minutoBayovar>=HORA_MINUTOS-frecuenciaTrenes){
                 horaBayovar++;
@@ -104,6 +113,7 @@ public class CalculaHorario {
             }
 
             if(viajesAlDiaTotal==TOTALVIAJES_L_V){frecuenciasDiaParticularAVilla(i);}// Calcula la frecuencia variable: Si es L-V
+            else if(viajesAlDiaTotal==TOTALVIAJES_DOMINGO){frecuenciasDiaDomingo(i);}
 
             if(minutoVilla>=HORA_MINUTOS-frecuenciaTrenes){
                 horaVilla++;
@@ -169,6 +179,13 @@ public class CalculaHorario {
         }
         else if(param>=111 && param<=119){
             frecuenciaTrenes=10;
+        }
+    }
+
+
+    public void frecuenciasDiaDomingo(int param){
+        if(param>65){
+            frecuenciaTrenes=12;
         }
     }
 

@@ -133,8 +133,6 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
 
 
     public void establecerHora(){
-        //DialogFragment newFragment = new TimePickerFragment();
-        //newFragment.show(this.getActivity().getSupportFragmentManager(), "timePicker");
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
@@ -245,7 +243,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         int varMinutoLlegada=0;
         int minutosEsperandoTren=0;
                 //Obteniendo la hora de espera
-        StringTokenizer stActual= new StringTokenizer(HoraEspera,":");
+        StringTokenizer stActual= new StringTokenizer(HoraEspera,": ");
         int horaEspera=Integer.parseInt(stActual.nextToken());
         int minutoEspera=Integer.parseInt((stActual.nextToken()));
 
@@ -265,14 +263,6 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         int tiempoEstimado=Integer.parseInt(stTiempoEstimado.nextToken());
         int minutosTotalViaje=minutosEsperandoTren + tiempoEstimado;
 
-        /*if(minutoEspera+minutosTotalViaje>=calculaHorario.HORA_MINUTOS){
-            varHoraLlegada = horaEspera+1;
-            varMinutoLlegada = (minutoEspera+minutosTotalViaje)-calculaHorario.HORA_MINUTOS;
-        }
-        else{
-            varHoraLlegada = horaEspera;
-            varMinutoLlegada = minutoEspera+minutosTotalViaje;
-        }*/
         if(minutoLlegadaTren+tiempoEstimado>=calculaHorario.HORA_MINUTOS){
             varHoraLlegada = horaLlegadaTren+1;
             varMinutoLlegada = (minutoLlegadaTren+tiempoEstimado)-calculaHorario.HORA_MINUTOS;
@@ -283,7 +273,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         }
 
 
-        tvHoraEspera.setText(HoraEspera);
+        tvHoraEspera.setText(horaEspera+":"+((minutoEspera+"").length()==1 ? "0"+minutoEspera : ""+minutoEspera));
         tvHoraLlegTren.setText(varHoraLlegadaTren);
         tvTiempoEstimado.setText(varTiempoEstimado);
         tvHoraLlegada.setText(varHoraLlegada+":"+((varMinutoLlegada+"").length()==1? "0"+varMinutoLlegada : varMinutoLlegada));
@@ -295,21 +285,10 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
 
 
     public String obtieneSguiente(String[]horaDireccion){
-        /*Calendar c = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
-        String formattedDate = dateFormat.format(c.getTime());*/
-
         //Obteniendo la hora actual
-        StringTokenizer stActual= new StringTokenizer(btnHora.getText().toString(),":");
+        StringTokenizer stActual= new StringTokenizer(btnHora.getText().toString(),": ");
         int horaActual=Integer.parseInt(stActual.nextToken());
         int minutoActual=Integer.parseInt((stActual.nextToken()));
-
-
-
-        //Última hora a la Direccion
-        StringTokenizer stDireccionUltimo= new StringTokenizer(horaDireccion[horaDireccion.length-1],":");
-        int horaultimaDireccion=Integer.parseInt(stDireccionUltimo.nextToken());
-        int minutoultimoDireccion=Integer.parseInt((stDireccionUltimo.nextToken()));
 
         //horario a Direccion
         int varPosition=0;
@@ -325,7 +304,6 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         }
 
         return horaDireccion[varPosition];
-
     }
 
     public void cargarDatos(){
@@ -336,21 +314,22 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         for(int i=0; i<estacionList.size(); i++){
             estaciones[i]=estacionList.get(i).getNombreEstacion();
         }
-
     }
 
 
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        btnHora.setText(hourOfDay + ":" + minute);
+        String am_pm = (hourOfDay < 12) ? "AM" : "PM";
+        String vMinute = (minute+"").length()==1 ? "0"+minute : ""+minute;
+        btnHora.setText(hourOfDay + ":" + vMinute+ " " + am_pm);
     }
 
 
 
 
 
-
+    //Si se utilizara un ListView
     class AdaptadorViaje extends ArrayAdapter<Viaje> {
 
         public AdaptadorViaje(Context context, Viaje[] datosViaje) {
