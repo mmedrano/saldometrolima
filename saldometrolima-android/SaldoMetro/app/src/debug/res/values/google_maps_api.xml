@@ -18,4 +18,7 @@ https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend
     <string name="google_maps_key_cmedrano" translatable="false" templateMergeStrategy="preserve">
         AIzaSyAifE-ZVv7dBSlaAZ3mY6IxtpEC4Hw1D7o
     </string>
+    <string name="google_maps_key_mmedrano" translatable="false" templateMergeStrategy="preserve">
+        AIzaSyCmz3I1L1RrIRVSwVwzwvcFUKAkI8DnHOU
+    </string>
 </resources>
