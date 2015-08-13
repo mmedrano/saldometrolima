@@ -102,9 +102,9 @@ public class EstacionMapsActivity extends ActionBarActivity {
         CameraUpdate camUp =
                 CameraUpdateFactory.newCameraPosition(camPos);
 
-        mMap.animateCamera(camUp);
+        //mMap.animateCamera(camUp);
 
-        //mMap.moveCamera(camUpd1);
+        mMap.moveCamera(camUp);
     }
 
     private void cerrar(){

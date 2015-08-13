@@ -16,71 +16,42 @@
         android:id="@+id/linearLayout"
         style="@style/padding">
 
-
         <LinearLayout
-            android:background="#de07b209"
+            android:background="@color/negro_metro_default"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                style="@style/TextValorSaldoViaje"
-                android:text="@string/saldo"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@+id/tvSaldoIncorrecto"
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/TextValorSaldoViaje"
-                android:text="@string/tsaldo"
-                android:textSize="20sp"/>
-        </LinearLayout>
-        <View style="@style/Divider"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="2"
+            android:orientation="vertical">
             <LinearLayout
-                android:background="#dc000000"
                 android:gravity="center_vertical"
-                android:layout_width="match_parent"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp"
-                android:paddingTop="20sp"
-                android:paddingBottom="20sp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:orientation="horizontal">
                 <TextView
                     android:text="@string/mensaje_calcularviaje"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     android:layout_weight="1"
                     style="@style/TextValorSaldoViaje"
                     android:textSize="20sp"/>
             </LinearLayout>
             <LinearLayout
-                android:background="#dc000000"
                 android:gravity="center_vertical"
+                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp"
-                android:paddingTop="25sp"
-                android:paddingBottom="20sp"
-                android:orientation="horizontal">
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:paddingLeft="20sp"
+                android:paddingRight="20sp">
                 <Button
-                    android:background="@drawable/button_metro"
+                    android:background="@drawable/button_metro_yellow"
                     android:id="@+id/btnDia"
+                    android:drawableLeft="@drawable/ic_event_white"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -88,8 +59,9 @@
                     style="@style/buttonStyle"/>
 
                 <Button
-                    android:background="@drawable/button_metro"
+                    android:background="@drawable/button_metro_yellow"
                     android:id="@+id/btnHora"
+                    android:drawableLeft="@drawable/ic_alarm_white"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -98,15 +70,14 @@
 
             </LinearLayout>
             <LinearLayout
-                android:background="#dc000000"
                 android:gravity="center_vertical"
+                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp"
-                android:paddingTop="25sp"
-                android:paddingBottom="20sp"
-                android:orientation="horizontal">
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:paddingLeft="20sp"
+                android:paddingRight="20sp">
 
 
                 <TextView
@@ -118,7 +89,7 @@
                     android:text="Estación origen"
                     android:textSize="15sp"/>
                 <Button
-                    android:background="@drawable/button_metro"
+                    android:background="@drawable/button_metro_yellow"
                     android:id="@+id/btnOrigen"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -128,15 +99,14 @@
 
             </LinearLayout>
             <LinearLayout
-                android:background="#dc000000"
                 android:gravity="center_vertical"
+                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp"
-                android:paddingTop="25sp"
-                android:paddingBottom="20sp"
-                android:orientation="horizontal">
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:paddingLeft="20sp"
+                android:paddingRight="20sp">
 
 
                 <TextView
@@ -148,7 +118,7 @@
                     android:text="Estación destino"
                     android:textSize="15sp"/>
                 <Button
-                    android:background="@drawable/button_metro"
+                    android:background="@drawable/button_metro_yellow"
                     android:id="@+id/btnDestino"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -157,44 +127,24 @@
                     style="@style/buttonStyle"/>
 
             </LinearLayout>
-            <LinearLayout
-                android:background="#dc000000"
-                android:gravity="center_vertical"
-                android:layout_width="match_parent"
+        </LinearLayout>
+        <View style="@style/Divider"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+
+            <Button
+                android:background="@drawable/button_metro"
+                android:id="@+id/btnCalculaViaje"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp"
-                android:paddingTop="25sp"
-                android:paddingBottom="20sp"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:text="Calcular viaje"
+                style="@style/buttonStyle"/>
 
-
-                <Button
-                    android:background="@drawable/button_metro"
-                    android:id="@+id/btnCalculaViaje"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:text="Calcular viaje"
-                    style="@style/buttonStyle"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:background="#dc000000"
-                android:gravity="center_vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingRight="10sp"
-                android:paddingTop="25sp"
-                android:paddingBottom="20sp"
-                android:orientation="horizontal">
-
-
-
-
-            </LinearLayout>
         </LinearLayout>
 
 

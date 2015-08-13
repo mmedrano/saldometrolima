@@ -69,8 +69,8 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:background="@color/negro_metro_default"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="6">

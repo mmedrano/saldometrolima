@@ -44,8 +44,7 @@
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/ta"
                 android:textColor="@color/texto_blanco"
-                android:textSize="20sp"
-                style="@style/RadioButtonMetro"/>
+                android:textSize="20sp"/>
             <ImageView
                 android:src="@drawable/mtarjetdulto"
                 android:layout_width="0sp"
@@ -72,8 +71,7 @@
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/tmu"
                 android:textColor="@color/texto_blanco"
-                android:textSize="20sp"
-                style="@style/RadioButtonMetro"/>
+                android:textSize="20sp"/>
             <ImageView
                 android:src="@drawable/mtarjetmedio"
                 android:layout_width="0sp"
@@ -100,8 +98,7 @@
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/tme"
                 android:textColor="@color/texto_blanco"
-                android:textSize="20sp"
-                style="@style/RadioButtonMetro"/>
+                android:textSize="20sp"/>
             <ImageView
                 android:layout_height="70sp"
                 android:layout_weight="1"

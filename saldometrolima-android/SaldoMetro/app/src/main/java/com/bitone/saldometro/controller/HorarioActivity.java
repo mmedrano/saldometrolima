@@ -123,11 +123,12 @@ public class HorarioActivity extends ActionBarActivity {
         StringTokenizer stActual= new StringTokenizer(formattedDate,":");
         int horaActual=Integer.parseInt(stActual.nextToken());
         int minutoActual=Integer.parseInt((stActual.nextToken()));
-        String AMPM=stActual.nextToken();
+        String AMPM=stActual.nextToken().toUpperCase();
         //validando las 24 y 00 horas
-        if(AMPM.equals("PM")&&horaActual==12){horaActual=horaActual;}
-        else if(AMPM.equals("PM")&&horaActual!=12){horaActual+=12;}
-        else if(AMPM.equals("AM")&&horaActual==12){horaActual=0;}
+        if(horaActual<=12){
+            if((AMPM.equals("PM")&&horaActual!=12) || (AMPM.equals("P.M.")&&horaActual!=12)){horaActual+=12;}
+            else if((AMPM.equals("AM")&&horaActual==12) || (AMPM.equals("A.M.")&&horaActual==12)){horaActual=0;}
+        }
 
         //horario a Direccion
         StringTokenizer stDireccion= new StringTokenizer(horaDireccion[position],":");
@@ -185,14 +186,12 @@ public class HorarioActivity extends ActionBarActivity {
         StringTokenizer stActual= new StringTokenizer(formattedDate,":");
         int horaActual=Integer.parseInt(stActual.nextToken());
         int minutoActual=Integer.parseInt((stActual.nextToken()));
-        String AMPM=stActual.nextToken();
+        String AMPM=stActual.nextToken().toUpperCase();
         //validando las 24 y 00 horas
-        /*if(AMPM.equals("PM")&&horaActual==12){horaActual=horaActual;}
-        else if(AMPM.equals("PM")&&horaActual!=12){horaActual+=12;}
-        else if(AMPM.equals("AM")&&horaActual==12){horaActual=0;}*/
+
         if(horaActual<=12){
-            if(AMPM.equals("PM")&&horaActual!=12){horaActual+=12;}
-            else if(AMPM.equals("AM")&&horaActual==12){horaActual=0;}
+            if((AMPM.equals("PM")&&horaActual!=12) || (AMPM.equals("P.M.")&&horaActual!=12)){horaActual+=12;}
+            else if((AMPM.equals("AM")&&horaActual==12) || (AMPM.equals("A.M.")&&horaActual==12)){horaActual=0;}
         }
 
         //Última hora a la Direccion
