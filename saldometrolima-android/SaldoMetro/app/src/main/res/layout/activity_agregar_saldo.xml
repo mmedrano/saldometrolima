@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         style="@style/padding">
         <LinearLayout
-            android:background="#de07b209"
+            android:background="@color/fondo_metro"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
