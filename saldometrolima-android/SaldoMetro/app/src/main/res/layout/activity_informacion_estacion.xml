@@ -59,12 +59,32 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <ListView android:id="@+id/LstInfoEstacion"
+            android:layout_weight="1"
+            style="@style/padding">
+            <!--<ListView android:id="@+id/LstInfoEstacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"/>
+                android:layout_marginBottom="5sp"/>-->
+            <TextView android:id="@+id/tvDistrito"
+                android:textColor="@color/texto_blanco"
+                android:gravity="left"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:text="Distrito"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:layout_weight="1"/>
+
+            <TextView android:id="@+id/tvUbicacion"
+                android:textColor="@color/texto_blanco"
+                android:gravity="center"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:text="Ubicación"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:layout_weight="1"/>
         </LinearLayout>
     </LinearLayout>
 
