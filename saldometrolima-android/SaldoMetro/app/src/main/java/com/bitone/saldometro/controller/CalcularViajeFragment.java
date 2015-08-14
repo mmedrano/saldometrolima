@@ -125,13 +125,13 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         else if(v.getId() == R.id.btnCalculaViaje){
             Validar validar = new Validar();
             if(btnDia.getText().toString().length()==3){
-                Toast.makeText(activity,"Seleccione el d√≠a que realizar√° su viaje por favor" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,"Seleccione el dÌa que realizar· su viaje por favor" , Toast.LENGTH_SHORT).show();
             }
             else if(!validar.isNumeric((btnHora.getText().toString().charAt(0))+"")){
-                Toast.makeText(activity,"Marque la hora en que realizar√° su viaje por favor "+(btnHora.getText().toString()) , Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,"Marque la hora en que realizar· su viaje por favor "+(btnHora.getText().toString()) , Toast.LENGTH_SHORT).show();
             }
             else if(origen==destino){
-                Toast.makeText(activity,"Seleccione un origen y destino v√°lido por favor" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,"Seleccione un origen y destino v·lido por favor" , Toast.LENGTH_SHORT).show();
             }
             else{
                 muestraCalculo();
@@ -153,7 +153,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
 
     public void elegirEstacion(final String punto){
         AlertDialog.Builder b = new AlertDialog.Builder(this.getActivity());
-        b.setTitle("Estaci√≥n "+punto);
+        b.setTitle("EstaciÛn "+punto);
 
         b.setItems(estaciones, new DialogInterface.OnClickListener() {
 
