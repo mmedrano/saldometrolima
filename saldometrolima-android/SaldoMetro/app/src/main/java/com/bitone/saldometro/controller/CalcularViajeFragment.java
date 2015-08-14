@@ -70,6 +70,8 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
     private String[] horasABayovar=null;
     private String[] horasAVilla=null;
 
+    CalculaHorario calculaHorario=null;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -123,13 +125,13 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         else if(v.getId() == R.id.btnCalculaViaje){
             Validar validar = new Validar();
             if(btnDia.getText().toString().length()==3){
-                Toast.makeText(activity,"Seleccione el dÌa que realizar· su viaje por favor" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,"Seleccione el d√≠a que realizar√° su viaje por favor" , Toast.LENGTH_SHORT).show();
             }
             else if(!validar.isNumeric((btnHora.getText().toString().charAt(0))+"")){
-                Toast.makeText(activity,"Marque la hora en que realizar· su viaje por favor" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,"Marque la hora en que realizar√° su viaje por favor "+(btnHora.getText().toString()) , Toast.LENGTH_SHORT).show();
             }
             else if(origen==destino){
-                Toast.makeText(activity,"Seleccione un origen y destino v·lido por favor" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,"Seleccione un origen y destino v√°lido por favor" , Toast.LENGTH_SHORT).show();
             }
             else{
                 muestraCalculo();
@@ -143,14 +145,15 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), this, hour, minute,
-                DateFormat.is24HourFormat(getActivity()));
+        /*TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), this, hour, minute,
+                DateFormat.is24HourFormat(getActivity()));*/
+        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), this, hour, minute,false);
         timePickerDialog.show();
     }
 
     public void elegirEstacion(final String punto){
         AlertDialog.Builder b = new AlertDialog.Builder(this.getActivity());
-        b.setTitle("EstaciÛn "+punto);
+        b.setTitle("Estaci√≥n "+punto);
 
         b.setItems(estaciones, new DialogInterface.OnClickListener() {
 
@@ -191,7 +194,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         TextView tvHoraLlegada = (TextView)dialoglayout.findViewById(R.id.tvHoraLlegada);
 
         //Calculando horarios
-        CalculaHorario calculaHorario= new CalculaHorario(activity.getApplicationContext());
+        calculaHorario= new CalculaHorario(activity.getApplicationContext());
         List<HorarioEstacion> calcularHorariosList=calculaHorario.calcularHorarios(origen+1,btnDia.getText().toString());
 
         horasABayovar = new String[calcularHorariosList.size()];
@@ -298,6 +301,18 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         for(int i=0; i<estacionList.size(); i++){
             estaciones[i]=estacionList.get(i).getNombreEstacion();
         }
+
+        calculaHorario= new CalculaHorario(activity.getApplicationContext());
+        String defaultHorarioViaje = calculaHorario.obtenerFechaActual("dd-MM-yyyy h:mm a");
+        StringTokenizer stHora = new StringTokenizer(defaultHorarioViaje.substring(11,defaultHorarioViaje.length()),": ");
+        int horaTemp = Integer.parseInt(stHora.nextToken());Log.e("HORAAAAAAAAAA:  ",horaTemp+"");
+        String minutoTemp = stHora.nextToken();//minuto
+        String am_pm=stHora.nextToken();
+        String vHora="";
+        if((am_pm.toUpperCase().equals("PM") || am_pm.toUpperCase().equals("P.M.")) && horaTemp<12){horaTemp+=12; vHora=horaTemp+"";}
+        else if((am_pm.toUpperCase().equals("AM") || am_pm.toUpperCase().equals("A.M.")) && horaTemp==12){vHora="00";}
+        btnDia.setText(defaultHorarioViaje.substring(0,10));
+        btnHora.setText((vHora)+":"+minutoTemp+" "+am_pm);
     }
 
 
@@ -325,47 +340,6 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
-    //Metodo deprecado
-    public void elegirDia(){
-        final String dias []= {"Lunes","Martes","MiÈrcoles","Jueves","Viernes","S·bado","Domingo"};
-        AlertDialog.Builder builderDia = new AlertDialog.Builder(this.getActivity());
-        builderDia.setTitle("DÌa");
-
-        builderDia.setItems(dias, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                dialog.dismiss();
-                btnDia.setText(dias[which]);
-                dia=dias[which].toUpperCase();
-            }
-        });
-
-        builderDia.show();
-    }
-
-    //Si se utilizara un ListView
-    class AdaptadorViaje extends ArrayAdapter<Viaje> {
-
-        public AdaptadorViaje(Context context, Viaje[] datosViaje) {
-            super(context, R.layout.listitem_calculo_viaje, datosViaje);
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            View item = inflater.inflate(R.layout.listitem_calculo_viaje, null);
-
-            TextView tvEstacionViaje = (TextView)item.findViewById(R.id.tvEstacionViaje);
-            tvEstacionViaje.setText(datosViaje[position].getDescripcion());
-
-            TextView tvCalculoViaje = (TextView)item.findViewById(R.id.tvCalculoViaje);
-            tvCalculoViaje.setText(datosViaje[position].getHora());
-
-
-            return(item);
-        }
-    }
 }
 
 

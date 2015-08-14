@@ -25,10 +25,15 @@ public class InformacionEstacionActivity extends ActionBarActivity {
     ListView LstCalculoViaje=null;
     Estacion[] datos=null;
     CalculaViaje.ViajeEstacion [] datosCalculoViaje=null;
+
+    TextView tvDistrito, tvUbicacion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacion_estacion);
+
+        tvDistrito = (TextView)findViewById(R.id.tvDistrito);
+        tvUbicacion = (TextView)findViewById(R.id.tvUbicacion);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -57,13 +62,15 @@ public class InformacionEstacionActivity extends ActionBarActivity {
         String distrito= this.getIntent().getExtras().getString("distrito");
         String ubicacion= this.getIntent().getExtras().getString("ubicacion");
         Estacion estacion = new Estacion(idEstacion,null,distrito, ubicacion,null);
-        datos = new Estacion[1];
+
+        /*datos = new Estacion[1];
         datos[0] = estacion;
 
         AdaptadorLstInformacionEstacion adaptadorLstInformacionEstacion= new AdaptadorLstInformacionEstacion(this.getApplicationContext(),datos);
         lstInfoEstacion = (ListView) findViewById(R.id.LstInfoEstacion);
-        lstInfoEstacion.setAdapter(adaptadorLstInformacionEstacion);
-
+        lstInfoEstacion.setAdapter(adaptadorLstInformacionEstacion);*/
+        tvDistrito.setText(estacion.getDistrito());
+        tvUbicacion.setText(estacion.getUbicacion());
         //
 
         CalculaViaje calculaViaje = new CalculaViaje();
@@ -109,6 +116,7 @@ public class InformacionEstacionActivity extends ActionBarActivity {
             return(item);
         }
     }
+
 
     class AdaptadorLstCalculaViajeEstacion extends ArrayAdapter<CalculaViaje.ViajeEstacion> {
 
