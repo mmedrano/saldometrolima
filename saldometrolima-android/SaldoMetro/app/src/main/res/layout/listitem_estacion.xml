@@ -5,12 +5,12 @@
     style="@style/listitemdefault">
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center_vertical"
+        android:orientation="horizontal"
         >
         <TextView android:id="@+id/tvEstacion"
             android:textColor="@color/texto_blanco"
@@ -24,28 +24,34 @@
 
         <ImageButton
             android:id="@+id/btnInformacion"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
             android:gravity="center"
-            android:src="@drawable/ic_info_outline_white"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_width="0sp"
+            android:layout_marginRight="2sp"
+            android:src="@drawable/ic_info_outline_white"
+            style="@style/buttonListItem"
             />
 
         <ImageButton
             android:id="@+id/btnHorario"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
             android:gravity="center"
-            android:src="@drawable/ic_alarm_white"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_width="0sp"
+            android:layout_marginRight="2sp"
+            android:src="@drawable/ic_alarm_white"
+            style="@style/buttonListItem"
             />
         <ImageButton
             android:id="@+id/btnMapa"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:src="@drawable/ic_alarm_white"
+            android:src="@drawable/ic_room_white"
             android:layout_weight="1"
+            style="@style/buttonListItem"
             />
     </LinearLayout>
 
