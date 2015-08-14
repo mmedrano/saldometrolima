@@ -60,4 +60,8 @@
         <item name="android:background">#FFFFFF</item>
     </style>
 
+    <style name="buttonListItem">
+        <item name="android:background">@drawable/button_metro_black</item>
+    </style>
+
 </resources>

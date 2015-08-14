@@ -60,4 +60,7 @@
         <item name="android:background">#FFFFFF</item>
     </style>
 
+    <style name="buttonListItem">
+    </style>
+
 </resources>
