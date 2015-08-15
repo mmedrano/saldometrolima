@@ -18,4 +18,5 @@
     <item name="darkred" type="color">#FFCC0000</item>
     <item name="yellow" type="color">#FFFFFD53</item>
     <item name="transparent" type="color">@android:color/transparent</item>
+    <item name="yellow_metro" type="color">#B6B424</item>
 </resources>
