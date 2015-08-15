@@ -27,18 +27,20 @@
                 android:layout_weight="1"
                 android:text="RESULTADO OBTENIDO"
                 android:textStyle="bold"
-                android:background="#006400"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textColor="@color/fondo_metro"
+                android:textSize="15sp"
                 android:width="0dp"/>
         </LinearLayout>
         <LinearLayout
+            android:background="@color/fondo_metro"
             android:gravity="center_vertical"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="horizontal"
+            android:paddingTop="10sp"
+            android:paddingBottom="10sp"
             android:paddingLeft="5sp"
             android:paddingRight="5sp">
             <TextView
@@ -46,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:layout_width="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/texto_blanco"
                 android:text="@string/alert_desc1"
                 android:textStyle="bold"
                 android:width="0dp"/>
@@ -57,17 +59,20 @@
                 android:layout_weight="1"
                 android:layout_width="0sp"
                 android:text="hh:mm"
-                android:textColor="#000000"
+                android:textColor="@color/texto_blanco"
                 android:textStyle="bold"
                 android:width="0dp"/>
         </LinearLayout>
         <LinearLayout
+            android:background="@color/yellow_metro"
             android:gravity="center_vertical"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="horizontal"
+            android:paddingTop="10sp"
+            android:paddingBottom="10sp"
             android:paddingLeft="5sp"
             android:paddingRight="5sp">
             <TextView
@@ -75,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:layout_width="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/texto_blanco"
                 android:text="@string/alert_desc2"
                 android:textStyle="bold"
                 android:width="0dp"/>
@@ -86,17 +91,20 @@
                 android:layout_weight="1"
                 android:layout_width="0sp"
                 android:text="hh:mm"
-                android:textColor="#000000"
+                android:textColor="@color/texto_blanco"
                 android:textStyle="bold"
                 android:width="0dp"/>
         </LinearLayout>
         <LinearLayout
+            android:background="@color/fondo_metro"
             android:gravity="center_vertical"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="horizontal"
+            android:paddingTop="10sp"
+            android:paddingBottom="10sp"
             android:paddingLeft="5sp"
             android:paddingRight="5sp">
             <TextView
@@ -104,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:layout_width="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/texto_blanco"
                 android:text="@string/alert_desc3"
                 android:textStyle="bold"
                 android:width="0dp"/>
@@ -115,17 +123,20 @@
                 android:layout_weight="1"
                 android:layout_width="0sp"
                 android:text="hh:mm"
-                android:textColor="#000000"
+                android:textColor="@color/texto_blanco"
                 android:textStyle="bold"
                 android:width="0dp"/>
         </LinearLayout>
         <LinearLayout
+            android:background="@color/yellow_metro"
             android:gravity="center_vertical"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="horizontal"
+            android:paddingTop="10sp"
+            android:paddingBottom="10sp"
             android:paddingLeft="5sp"
             android:paddingRight="5sp">
             <TextView
@@ -133,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:layout_width="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/texto_blanco"
                 android:text="@string/alert_desc4"
                 android:textStyle="bold"
                 android:width="0dp"/>
@@ -144,7 +155,7 @@
                 android:layout_weight="1"
                 android:layout_width="0sp"
                 android:text="hh:mm"
-                android:textColor="#000000"
+                android:textColor="@color/texto_blanco"
                 android:textStyle="bold"
                 android:width="0dp"/>
         </LinearLayout>

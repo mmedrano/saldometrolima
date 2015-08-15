@@ -52,7 +52,7 @@ public class ReaderDbHelper extends SQLiteOpenHelper {
 
         db.execSQL("insert into " + TipoMovimientoDataSource.TIPOMOVIMIENTO_TABLE_NAME + " VALUES (null, 'Recarga');");
         db.execSQL("insert into " + TipoMovimientoDataSource.TIPOMOVIMIENTO_TABLE_NAME + " VALUES (null, 'Viaje');");
-        db.execSQL("insert into " + TipoMovimientoDataSource.TIPOMOVIMIENTO_TABLE_NAME + " VALUES (null, 'Reestablecimiento de saldo');");
+        db.execSQL("insert into " + TipoMovimientoDataSource.TIPOMOVIMIENTO_TABLE_NAME + " VALUES (null, 'Correción de saldo');");
         db.execSQL("insert into " + TipoMovimientoDataSource.TIPOMOVIMIENTO_TABLE_NAME + " VALUES (null, 'Cambio de tarjeta');");
 
         db.execSQL("insert into " + EstacionDataSource.ESTACION_TABLE_NAME + " VALUES (null, 'Villa El Salvador', 'Villa El Salvador', 'Av. Separadora Industrial / Av. Velasco Alvarado','-12.207408448324356,-76.93326104432344');");
