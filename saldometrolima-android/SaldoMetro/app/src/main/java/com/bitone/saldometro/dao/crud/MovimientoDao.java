@@ -34,12 +34,12 @@ public class MovimientoDao {
         db.close();
     }
 
-    public void eliminarMovimientos(){
-        //String selection = " Column = ?";
-        //String[] selectionArgs = { "3" };
+    public void eliminarMovimientos(String idTarjeta){
+        String selection = " idTarjeta = ?";
+        String[] selectionArgs = { idTarjeta };
         TarjetaDataSource dataSource = new TarjetaDataSource(context);
         SQLiteDatabase db = context.openOrCreateDatabase(Globales.DBNAME, Context.MODE_PRIVATE, null);
-        db.delete("MovimientoSaldo", null, null);
+        db.delete("MovimientoSaldo", selection, selectionArgs);
         db.close();
     }
 

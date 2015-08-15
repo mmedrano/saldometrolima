@@ -305,12 +305,13 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         calculaHorario= new CalculaHorario(activity.getApplicationContext());
         String defaultHorarioViaje = calculaHorario.obtenerFechaActual("dd-MM-yyyy h:mm a");
         StringTokenizer stHora = new StringTokenizer(defaultHorarioViaje.substring(11,defaultHorarioViaje.length()),": ");
-        int horaTemp = Integer.parseInt(stHora.nextToken());Log.e("HORAAAAAAAAAA:  ",horaTemp+"");
+        int horaTemp = Integer.parseInt(stHora.nextToken());
         String minutoTemp = stHora.nextToken();//minuto
         String am_pm=stHora.nextToken();
         String vHora="";
         if((am_pm.toUpperCase().equals("PM") || am_pm.toUpperCase().equals("P.M.")) && horaTemp<12){horaTemp+=12; vHora=horaTemp+"";}
         else if((am_pm.toUpperCase().equals("AM") || am_pm.toUpperCase().equals("A.M.")) && horaTemp==12){vHora="00";}
+        else {vHora = horaTemp+"";}
         btnDia.setText(defaultHorarioViaje.substring(0,10));
         btnHora.setText((vHora)+":"+minutoTemp+" "+am_pm);
     }

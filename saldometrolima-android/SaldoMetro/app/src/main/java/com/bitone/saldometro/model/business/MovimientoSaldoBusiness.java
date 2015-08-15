@@ -29,7 +29,7 @@ public class MovimientoSaldoBusiness {
             if(nuevoMovimientoSaldo == null){
                 resultado.setMensaje("Llene los datos solicitados.");
             }else{
-                if(nuevoMovimientoSaldo.getMonto() == 0){
+                if(nuevoMovimientoSaldo.getMonto() == 0 && nuevoMovimientoSaldo.getIdTipoMovimiento()!=MovimientoSaldo.MOV_REESTABLECER_SALDO){
                     resultado.setMensaje("El monto a recargar debe ser mayor a cero.");
                 }
                 else{
@@ -41,7 +41,7 @@ public class MovimientoSaldoBusiness {
             }
         }catch (Exception ex){
             resultado = new SMResultado();
-            resultado.setMensaje("Ocurrio un error al registrar el movimiento de saldo.");
+            resultado.setMensaje("Ocurrió un error al registrar el movimiento de saldo.");
             resultado.setDetalleMensaje(ex.getMessage());
         }
         return resultado;
