@@ -76,6 +76,7 @@ public class AgregarSaldoActivity extends ActionBarActivity implements View.OnCl
     }
 
     private void cargarDatos(){
+        setTitle("Agregar saldo - "+preferences.obtenerNombreTarjetaSeleccionada(preferences.obtenerTarjetaSeleccionada()));
         montoSaldo = getIntent().getExtras().getDouble(Globales.EXTRA_SALDO_ACTUAL);
         montoSaldo = Validar.round(montoSaldo, 2);
         tvSaldoActual.setText(SMString.obtenerFormatoMonto(montoSaldo));
@@ -87,7 +88,7 @@ public class AgregarSaldoActivity extends ActionBarActivity implements View.OnCl
     private void agregarSaldo(){
         try{
             String strMontoRecarga = txtCredito.getText().toString();
-            SMResultado resultadoValidacion = Validar.validaDouble(strMontoRecarga, montoSaldo, MovimientoSaldo.MOV_RECARGA);
+            SMResultado resultadoValidacion = Validar.validaDouble(strMontoRecarga, montoSaldo, MovimientoSaldo.MOV_RECARGA, preferences.obtenerTarjetaSeleccionada());
             if(resultadoValidacion.esCorrecto()){
                 double montoRecarga = Validar.round(Double.parseDouble(strMontoRecarga), 2);
 
@@ -108,6 +109,7 @@ public class AgregarSaldoActivity extends ActionBarActivity implements View.OnCl
                 SMResultado resultado = movimientoSaldoBusiness.recargarSaldo(movimientoSaldo, tarjetaActualizada);
 
                 if(resultado.esCorrecto()){
+                    Toast.makeText(this, "Se ha recargado S/" + montoRecarga + " a su tarjeta", Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
                     Toast.makeText(this, resultadoValidacion.getMensaje(), Toast.LENGTH_SHORT).show();

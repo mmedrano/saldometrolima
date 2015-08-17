@@ -3,6 +3,7 @@ package com.bitone.saldometro.utils;
 import com.bitone.saldometro.model.entity.MovimientoSaldo;
 import com.bitone.saldometro.model.entity.SMResultado;
 import com.bitone.saldometro.model.entity.TipoMovimiento;
+import com.bitone.saldometro.model.entity.TipoTarjeta;
 
 import java.text.DecimalFormat;
 import java.util.StringTokenizer;
@@ -26,7 +27,7 @@ public class Validar {
         return (double) tmp / factor;
     }
 
-    public static SMResultado validaDouble(String credito, double saldo, int tipoMovimiento){
+    public static SMResultado validaDouble(String credito, double saldo, int tipoMovimiento, int tipoTarjeta){
         SMResultado resultado;
         try {
             resultado = new SMResultado();
@@ -55,8 +56,15 @@ public class Validar {
                             resultado.setMensaje("Por favor ingrese un monto válido.");
                         }
                         else if(d.length() == 2){
-                            if(Integer.parseInt(d.charAt(1) + "") > 0){
-                                resultado.setMensaje("Por favor ingrese un monto válido.");
+                            if(tipoTarjeta != TipoTarjeta.ADULTO && tipoMovimiento==MovimientoSaldo.MOV_REESTABLECER_SALDO){
+                                if(Integer.parseInt(d)%5 != 0){
+                                    resultado.setMensaje("Por favor ingrese un monto válido.");
+                                }
+                            }
+                            else{
+                                if(Integer.parseInt(d.charAt(1) + "") > 0){
+                                    resultado.setMensaje("Por favor ingrese un monto válido.");
+                                }
                             }
                         }
                     }

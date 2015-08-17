@@ -42,7 +42,6 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_marcar_viaje);
-        this.setTitle("Marcar Viaje");
 
         tvSaldoActual=(TextView)findViewById(R.id.tvSaldoA);
         tvTotalViaje=(TextView)findViewById(R.id.tvTotalViaje);
@@ -110,6 +109,7 @@ public class MarcarViajeActivity extends ActionBarActivity implements  View.OnCl
     }
 
     private void cargarDatos(){
+        this.setTitle("Marcar viaje - "+preferences.obtenerNombreTarjetaSeleccionada(preferences.obtenerTarjetaSeleccionada()));
         saldoActual = getIntent().getExtras().getDouble(Globales.EXTRA_SALDO_ACTUAL);
         saldoActual = Validar.round(saldoActual, 2);
         tvSaldoActual.setText(Globales.MONEDA + SMString.obtenerFormatoMonto(saldoActual));

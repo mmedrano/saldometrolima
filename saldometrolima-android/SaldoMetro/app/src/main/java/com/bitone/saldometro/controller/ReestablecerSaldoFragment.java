@@ -45,7 +45,7 @@ public class ReestablecerSaldoFragment extends Fragment implements View.OnClickL
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        this.getActivity().setTitle("Reestablecer Saldo");
+        //this.getActivity().setTitle("Reestablecer Saldo");
         context=this.getActivity().getApplicationContext();
         rootView = inflater.inflate(R.layout.fragment_reestablecer_saldo, container, false);
 
@@ -66,6 +66,7 @@ public class ReestablecerSaldoFragment extends Fragment implements View.OnClickL
     private void CargarDatosTarjeta(){
         preferences = new SMPreferences(context);
         int tarjetaSeleccionada = preferences.obtenerTarjetaSeleccionada();
+        this.getActivity().setTitle("Corregir saldo - "+preferences.obtenerNombreTarjetaSeleccionada(preferences.obtenerTarjetaSeleccionada()));
 
         TarjetaBusiness tarjetaBusiness = new TarjetaBusiness(context);
         SMResultado resultado = tarjetaBusiness.consultarTarjeta(tarjetaSeleccionada);
@@ -86,7 +87,7 @@ public class ReestablecerSaldoFragment extends Fragment implements View.OnClickL
     private boolean validarMontoReestableer(){
         String strMontoReestablecer = txtSaldoReestablecido.getText().toString();
         if(strMontoReestablecer.length() == 0) strMontoReestablecer = "0.00";
-        SMResultado resultadoValidacion = Validar.validaDouble(strMontoReestablecer, montoSaldo, MovimientoSaldo.MOV_REESTABLECER_SALDO);
+        SMResultado resultadoValidacion = Validar.validaDouble(strMontoReestablecer, montoSaldo, MovimientoSaldo.MOV_REESTABLECER_SALDO, preferences.obtenerTarjetaSeleccionada());
         if(resultadoValidacion.esCorrecto()){
             return true;
         }else{

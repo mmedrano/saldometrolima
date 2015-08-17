@@ -29,6 +29,7 @@ public class InicioFragment extends Fragment implements View.OnClickListener{
     Context context;
 
     double montoSaldo = 0.00, montoTarifa = 0.00;
+    SMPreferences preferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

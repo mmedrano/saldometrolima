@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.bitone.saldometro.model.entity.TipoTarjeta;
@@ -17,10 +18,19 @@ import java.nio.charset.Charset;
 
 public class ElegirTarjetaActivity extends ActionBarActivity implements View.OnClickListener {
 
+    RadioButton rbTa, rbTmu, rbTme; RadioGroup rg;
+    SMPreferences preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_elegir_tarjeta);
+        preferences = new SMPreferences(this.getApplicationContext());
+
+        rbTa = (RadioButton) findViewById(R.id.rbTa);
+        rbTmu = (RadioButton) findViewById(R.id.rbTmu);
+        rbTme = (RadioButton) findViewById(R.id.rbTme);
+        focusTarjetaPreferencia(preferences.obtenerTarjetaSeleccionada());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -50,6 +60,7 @@ public class ElegirTarjetaActivity extends ActionBarActivity implements View.OnC
     }
 
     public void onRadioButtonClicked(View v){
+        //clearRb();
         int tarjetaSeleccionada = TipoTarjeta.DEFAULT;
         boolean checked = ((RadioButton) v).isChecked();
 
@@ -78,6 +89,25 @@ public class ElegirTarjetaActivity extends ActionBarActivity implements View.OnC
     }
 
     //METODOS
+    private void focusTarjetaPreferencia(int idTipoTarjeta){
+        switch(idTipoTarjeta){
+            case 1:
+                rbTa.setChecked(true);
+                break;
+            case 2:
+                rbTmu.setChecked(true);
+                break;
+            case 3:
+                rbTme.setChecked(true);
+                break;
+        }
+    }
+    private void clearRb(){
+        rbTa.setChecked(false);
+        rbTmu.setChecked(false);
+        rbTme.setChecked(false);
+    }
+
     private void irAInicio(){
         Intent intentMain = new Intent();
         intentMain.setClass(getApplicationContext(), MainActivity.class);
