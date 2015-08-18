@@ -42,23 +42,19 @@
         </activity>
         <activity
             android:name=".AgregarSaldoActivity"
-            android:label="@string/title_activity_agregar_saldo"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_agregar_saldo" >
         </activity>
         <activity
             android:name=".MarcarViajeActivity"
-            android:label="@string/title_activity_marcar_viaje"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_marcar_viaje">
         </activity>
         <activity
             android:name=".HorarioActivity"
-            android:label="Horario"
-            android:screenOrientation="portrait" >
+            android:label="Horario">
         </activity>
         <activity
             android:name=".InformacionEstacionActivity"
-            android:label="Horario"
-            android:screenOrientation="portrait" >
+            android:label="Horario" >
         </activity>
 
         <meta-data

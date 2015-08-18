@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">SaldoMetro</string>
+    <string name="app_name">Mi Linea 1</string>
 
     <string name="titulo_opcion_inicio">Inicio</string>
     <string name="titulo_opcion_elegir_tarjeta">Elegir Tarjeta</string>
     <string name="titulo_opcion_horario">Horarios</string>
     <string name="titulo_opcion_reestablecer">Corregir saldo</string>
     <string name="titulo_opcion_movimientos">Movimientos</string>
-    <string name="titulo_opcion_ayuda">Sobre SaldoMetro</string>
+    <string name="titulo_opcion_ayuda">Acerca de</string>
     <string name="titulo_opcion_viajes">Calcular viaje</string>
 
 
@@ -65,5 +65,16 @@
     <string name="alert_desc3">Tiempo de viaje</string>
     <string name="alert_desc4">Llegada al destino</string>
     <string name="title_activity_estacion_maps">Map</string>
+    
+    <!-- Sobre Mi Metro Lima -->
+    <string name="nombre_completo_app">Mi Metro Lima  v1.0.0</string>
+    <string name="iniciativa_app">Una iniciativa de:</string>
+    <string name="nombre_empresa">BITONE TECHNOLOGIES</string>
+    <string name="derechos_reservados">Todos los derechos reservados</string>
+    <string name="contacto_empresa">contacto@bitoneperu.com</string>
+    <string name="creditos_andina">Imagen de fondo proporcionada por ANDINA</string>
 
+    <string name="url_bitone">http://www.bitoneperu.com/</string>
+    <string name="email_bitone">contacto@bitone.com</string>
+    <string name="email_asunto">Contacto BitOne</string>
 </resources>

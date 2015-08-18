@@ -4,6 +4,7 @@
     <color name="texto_blanco">#FFFFFF</color>
     <color name="negro_metro_default">#dc000000</color>
 
+    <item name="white" type="color">#FFFFFF</item>
     <item name="negro" type="color">#000000</item>
     <item name="verdemetro" type="color">#006400</item>
     <item name="blue" type="color">#FF33B5E5</item>
