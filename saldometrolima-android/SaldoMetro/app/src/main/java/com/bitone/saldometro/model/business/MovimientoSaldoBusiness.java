@@ -61,11 +61,11 @@ public class MovimientoSaldoBusiness {
                 movimientoDao.insertar(nuevoMovimientoSaldo);
                 tarjetaDao = new TarjetaDao(context);
                 tarjetaDao.actualizar(tarjetaAcualizada);
-                resultado.setMensaje("Se ha descontado S/" + nuevoMovimientoSaldo.getMonto() + " de su tarjeta! ");
+                resultado.setMensaje("Se ha descontado S/" + nuevoMovimientoSaldo.getMonto() + " de su tarjeta");
             }
         }catch (Exception ex){
             resultado = new SMResultado();
-            resultado.setMensaje("Ocurrio un error al registrar el movimiento de saldo.");
+            resultado.setMensaje("Ocurrió un error al registrar el movimiento de saldo.");
             resultado.setDetalleMensaje(ex.getMessage());
         }
         return resultado;

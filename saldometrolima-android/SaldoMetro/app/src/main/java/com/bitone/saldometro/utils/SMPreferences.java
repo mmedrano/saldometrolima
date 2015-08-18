@@ -37,23 +37,8 @@ public class SMPreferences {
         editor.commit();
     }
 
-
-
-
-
-    public void registrarActualizarPreferencia(Context context, String preferencia, String key,String value, int mode){
-        SharedPreferences prefs =
-                context.getSharedPreferences(preferencia,mode);
-
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(key, value);
-        editor.commit();
-    }
-
-    public String  obtenerPreferenciaTarjeta(Context context, int mode){
-        SharedPreferences prefs =
-                context.getSharedPreferences("MisPreferencias", mode);
-        return prefs.getString("tarjeta", "0");
+    public String obtenerNombreTarjetaSeleccionada(int idTipoTarjeta){
+        return idTipoTarjeta ==1 ? "Adulto" : (idTipoTarjeta ==2 ? "Universitario" : "Escolar");
     }
 
 

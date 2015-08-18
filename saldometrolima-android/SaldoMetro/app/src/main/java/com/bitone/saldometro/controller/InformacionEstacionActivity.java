@@ -58,7 +58,7 @@ public class InformacionEstacionActivity extends ActionBarActivity {
     public void cargarInformacion(){
         int idEstacion= this.getIntent().getExtras().getInt("idEstacion");
         String nombrEstacion = this.getIntent().getExtras().getString("nombreEstacion");
-        this.setTitle(nombrEstacion + " - Información");
+        this.setTitle(nombrEstacion);
         String distrito= this.getIntent().getExtras().getString("distrito");
         String ubicacion= this.getIntent().getExtras().getString("ubicacion");
         Estacion estacion = new Estacion(idEstacion,null,distrito, ubicacion,null);
