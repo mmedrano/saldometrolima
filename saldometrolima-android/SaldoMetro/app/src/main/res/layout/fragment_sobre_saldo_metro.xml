@@ -3,10 +3,76 @@
     android:layout_height="match_parent"
     tools:context="com.bitone.saldometro.controller.SobreSaldoMetroFragment">
 
-    <ScrollView
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        
-    </ScrollView>
+        style="@style/padding">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="10sp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:src="@drawable/metro_lima_about"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_width="fill_parent"
+            android:orientation="vertical"
+            android:padding="15sp">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:paddingBottom="10sp"
+                android:text="@string/nombre_completo_app"
+                android:textColor="@color/fondo_metro"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:text="@string/iniciativa_app"
+                android:textColor="@color/negro"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/tvNombreEmpresa"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:paddingBottom="5sp"
+                android:paddingTop="5sp"
+                android:text="@string/nombre_empresa"
+                android:textColor="@color/negro"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:text="@string/derechos_reservados"
+                android:textColor="@color/negro"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/tvEmailEmpresa"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:paddingBottom="5sp"
+                android:paddingTop="10sp"
+                android:text="@string/contacto_empresa"
+                android:textColor="@color/fondo_metro"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:paddingTop="20sp"
+                android:text="@string/creditos_andina"
+                android:textSize="13sp"/>
+        </LinearLayout>
 
+    </LinearLayout>
 </FrameLayout>

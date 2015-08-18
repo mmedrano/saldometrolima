@@ -111,8 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp">
+            android:layout_weight="1">
             <Button
                 android:id="@+id/btnAgregar"
                 android:background="@drawable/button_metro"
