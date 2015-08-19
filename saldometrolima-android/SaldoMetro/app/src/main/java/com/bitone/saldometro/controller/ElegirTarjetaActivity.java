@@ -60,18 +60,20 @@ public class ElegirTarjetaActivity extends ActionBarActivity implements View.OnC
     }
 
     public void onRadioButtonClicked(View v){
-        //clearRb();
         int tarjetaSeleccionada = TipoTarjeta.DEFAULT;
         boolean checked = ((RadioButton) v).isChecked();
 
         switch(v.getId()) {
             case R.id.rbTa:
+                clearRb(); rbTa.setChecked(true);
                 if (checked) tarjetaSeleccionada = TipoTarjeta.ADULTO;
                 break;
             case R.id.rbTmu:
+                clearRb(); rbTmu.setChecked(true);
                 if (checked) tarjetaSeleccionada = TipoTarjeta.UNIVERSITARIO;
                 break;
             case R.id.rbTme:
+                clearRb(); rbTme.setChecked(true);
                 if (checked) tarjetaSeleccionada = TipoTarjeta.ESCOLAR;
                 break;
             default:
