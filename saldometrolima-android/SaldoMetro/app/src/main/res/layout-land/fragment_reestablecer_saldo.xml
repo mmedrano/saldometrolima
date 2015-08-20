@@ -1,0 +1,120 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bitone.saldometro.controller.AgregarSaldoActivity">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo_metro_lima"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout"
+        style="@style/padding">
+
+
+        <LinearLayout
+            android:background="@color/fondo_metro"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                style="@style/TextValorSaldoViaje"
+                android:text="@string/saldo"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/tvSaldoIncorrecto"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/TextValorSaldoViaje"
+                android:text="@string/tsaldo"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <View style="@style/Divider"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:orientation="vertical"
+            android:layout_weight="3">
+            <LinearLayout
+                android:background="#dc000000"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_weight="1"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="@string/mensaje_reestablecer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    style="@style/TextValorSaldoViaje"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="#dc000000"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_weight="1"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:orientation="horizontal">
+                <TextView
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    style="@style/TextValorSaldoViaje"
+                    android:text="@string/sc"
+                    android:textSize="20sp"/>
+                <EditText
+                    android:id="@+id/txtSaldoReestablece"
+                    android:background="@android:drawable/edit_text"
+                    android:gravity="center"
+                    android:hint="@string/monto"
+                    android:inputType="numberDecimal"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:gravity="center_vertical"
+            android:layout_weight="2">
+            <Button
+                android:id="@+id/btnReestablecer"
+                android:background="@drawable/button_metro"
+                android:text="@string/reestablecer"
+                style="@style/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
