@@ -68,11 +68,12 @@
     
     <!-- Sobre Mi Metro Lima -->
     <string name="nombre_completo_app">Mi Metro Lima  v1.0.0</string>
-    <string name="iniciativa_app">Una iniciativa de:</string>
+    <string name="iniciativa_app">Una iniciativa de</string>
     <string name="nombre_empresa">BITONE TECHNOLOGIES</string>
     <string name="derechos_reservados">Todos los derechos reservados</string>
     <string name="contacto_empresa">contacto@bitoneperu.com</string>
-    <string name="creditos_andina">Imagen de fondo proporcionada por ANDINA</string>
+    <string name="creditos_andina">Créditos de imagen de fondo: ANDINA</string>
+    <string name="url_andina">http://www.andina.com.pe/</string>
 
     <string name="url_bitone">http://www.bitoneperu.com/</string>
     <string name="email_bitone">contacto@bitoneperu.com</string>
