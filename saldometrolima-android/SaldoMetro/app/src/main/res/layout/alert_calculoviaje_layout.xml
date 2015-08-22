@@ -159,6 +159,13 @@
                 android:textStyle="bold"
                 android:width="0dp"/>
         </LinearLayout>
+        <TextView
+            android:id="@+id/tvNota"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 </LinearLayout>
