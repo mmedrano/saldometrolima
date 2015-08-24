@@ -203,7 +203,7 @@ public class CalculaHorario {
             Date date = inFormat.parse(ddMMyyyy);
             SimpleDateFormat outFormat = new SimpleDateFormat("EEEE");
             nombreDia = outFormat.format(date);
-            return nombreDia;
+            return (nombreDia.charAt(0)+"").toUpperCase()+nombreDia.substring(1,nombreDia.length());
         }
         catch(Exception e){return null;}
     }

@@ -12,18 +12,19 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         style="@style/padding">
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="0sp"
+            android:layout_weight="1">
             <TextView
                 android:id="@+id/tvDireccionBayovar"
-                android:layout_width="match_parent"
-                android:layout_height="40sp"
+                android:layout_width="0sp"
+                android:layout_height="fill_parent"
                 android:text="Dirección a Bayóvar"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -33,8 +34,8 @@
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/tvDireccionVilla"
-                android:layout_width="match_parent"
-                android:layout_height="40sp"
+                android:layout_width="0sp"
+                android:layout_height="fill_parent"
                 android:text="Dirección a V. E. S."
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -47,18 +48,18 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="0sp"
+            android:layout_weight="10">
             <ListView android:id="@+id/LstHorarioABayovar"
                 android:background="@color/negro_metro_default"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0sp"
+                android:layout_height="fill_parent"
                 android:layout_weight="1"/>
 
             <ListView android:id="@+id/LstHorarioAVilla"
                 android:background="@color/negro_metro_default"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0sp"
+                android:layout_height="fill_parent"
                 android:layout_weight="1"/>
         </LinearLayout>
 

@@ -76,6 +76,7 @@
             android:paddingLeft="5sp"
             android:paddingRight="5sp">
             <TextView
+                android:id="@+id/tvLlegada"
                 android:gravity="left"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
