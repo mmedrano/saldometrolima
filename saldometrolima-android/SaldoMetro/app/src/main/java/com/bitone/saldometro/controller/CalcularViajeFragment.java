@@ -56,6 +56,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
     private DatePickerDialog ViajeDatePickerDialog;
     private SimpleDateFormat formatoDia;
 
+
     Context activity;
     int origen, destino;
     String dia="";
@@ -134,7 +135,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
                 Toast.makeText(activity,"Seleccione un origen y destino válido por favor" , Toast.LENGTH_SHORT).show();
             }
             else{
-                muestraCalculo();
+                mostrarDialogoResultado();
             }
 
         }
@@ -170,7 +171,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
     }
 
 
-    public void muestraCalculo(){
+    public void mostrarDialogoResultado(){
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this.getActivity());
         builder.setMessage("")
@@ -188,10 +189,13 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         LayoutInflater inflater = alertDialog.getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.alert_calculoviaje_layout, frameView);
 
+        //Instanciando objetos del dialog
         TextView tvHoraEspera = (TextView)dialoglayout.findViewById(R.id.tvHoraEspera);
         TextView tvHoraLlegTren = (TextView)dialoglayout.findViewById(R.id.tvHoraLlegTren);
         TextView tvTiempoEstimado = (TextView)dialoglayout.findViewById(R.id.tvTiempoEstimado);
         TextView tvHoraLlegada = (TextView)dialoglayout.findViewById(R.id.tvHoraLlegada);
+        TextView tvNota = (TextView)dialoglayout.findViewById(R.id.tvNota);
+        tvNota.setVisibility(View.GONE);
 
         //Calculando horarios
         calculaHorario= new CalculaHorario(activity.getApplicationContext());
@@ -200,23 +204,39 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         horasABayovar = new String[calcularHorariosList.size()];
         horasAVilla = new String[calcularHorariosList.size()];
 
-
         for(int i=0; i<calcularHorariosList.size(); i++){
             horasABayovar[i]=calcularHorariosList.get(i).getHoraABayovar();
             horasAVilla[i]=calcularHorariosList.get(i).getHoraAVillaSalvador();
         }
+
+        /*
+        //Obteniendo hora actual
+        Calendar c = Calendar.getInstance();*/
 
         //calculando datos para llenar en Popup
             //}Hora de Espera
         String HoraEspera=btnHora.getText().toString();
             //HoraLLegada Tren
         String varHoraLlegadaTren="00:00";
+        String varUltimaHora="", varPrimeraHora="";
         if(destino<origen){
             varHoraLlegadaTren=obtieneSguiente(horasAVilla);
+            varUltimaHora = horasAVilla[horasAVilla.length-1];
+            varPrimeraHora = horasAVilla[0];
+
         }
         else if(destino>origen){
             varHoraLlegadaTren=obtieneSguiente(horasABayovar);
+            varUltimaHora = horasABayovar[horasABayovar.length-1];
+            varPrimeraHora = horasABayovar[0];
         }
+
+            //Verifica si ya pasó la última salida
+        if(varHoraLlegadaTren.equals(varPrimeraHora)){
+            tvNota.setText("* Última hora de salida: "+varUltimaHora);
+            tvNota.setVisibility(View.VISIBLE);
+        }
+
             //Tiempo estimado
         String varTiempoEstimado="0 mins";
         CalculaViaje calculaViaje = new CalculaViaje();
@@ -230,9 +250,9 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         int varMinutoLlegada=0;
         int minutosEsperandoTren=0;
                 //Obteniendo la hora de espera
-        StringTokenizer stActual= new StringTokenizer(HoraEspera,": ");
-        int horaEspera=Integer.parseInt(stActual.nextToken());
-        int minutoEspera=Integer.parseInt((stActual.nextToken()));
+        StringTokenizer stHoraSeleccionada= new StringTokenizer(HoraEspera,": ");
+        int horaEspera=Integer.parseInt(stHoraSeleccionada.nextToken());
+        int minutoEspera=Integer.parseInt((stHoraSeleccionada.nextToken()));
 
 
                 //Obteniendo la hora de llegada del tre
@@ -316,6 +336,45 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         btnHora.setText((vHora)+":"+minutoTemp+" "+am_pm);
     }
 
+
+    private List<HorarioEstacion> validaObtenerHorario(String ultimaHoraDireccion){
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
+        String formattedDate = dateFormat.format(c.getTime());
+
+        //Obteniendo la hora actual
+        StringTokenizer stActual= new StringTokenizer(formattedDate,":");
+        int horaActual=Integer.parseInt(stActual.nextToken());
+        int minutoActual=Integer.parseInt((stActual.nextToken()));
+        String AMPM=stActual.nextToken().toUpperCase();
+        //validando las 24 y 00 horas
+        if(horaActual<=12){
+            if((AMPM.equals("PM")&&horaActual!=12) || (AMPM.equals("P.M.")&&horaActual!=12)){horaActual+=12;}
+            else if((AMPM.equals("AM")&&horaActual==12) || (AMPM.equals("A.M.")&&horaActual==12)){horaActual=0;}
+        }
+
+        //Última hora a la Direccion
+        StringTokenizer stDireccionUltimo= new StringTokenizer(ultimaHoraDireccion,":");
+        int horaultimaDireccion=Integer.parseInt(stDireccionUltimo.nextToken());
+        int minutoultimoDireccion=Integer.parseInt((stDireccionUltimo.nextToken()));
+
+        calculaHorario= new CalculaHorario(activity.getApplicationContext());
+        List<HorarioEstacion> calcularHorariosList=calculaHorario.calcularHorarios(origen + 1, btnDia.getText().toString());
+
+        if(((horaActual>horaultimaDireccion))||((horaActual==horaultimaDireccion)&&minutoActual>minutoultimoDireccion)){
+            StringTokenizer stDay = new StringTokenizer(btnDia.getText().toString(),"-");
+            int day=Integer.parseInt(stDay.nextToken()); int month=Integer.parseInt(stDay.nextToken());
+            int year=Integer.parseInt(stDay.nextToken());
+            c.set(year, month, day);
+            c.add(Calendar.DAY_OF_MONTH, 1);
+
+            SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+            String formatoDia = date.format(c.getTime());
+
+            calcularHorariosList=calculaHorario.calcularHorarios(origen + 1, formatoDia);
+        }
+        return calcularHorariosList;
+    }
 
 
     @Override
