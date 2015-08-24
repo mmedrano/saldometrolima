@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -45,7 +46,10 @@ public class HorarioActivity extends ActionBarActivity {
     private boolean horaEncontradaVilla=false;
     private String horaSeleccionadaVilla="";
 
-
+    boolean esHorarioDiaSiguiente=false;
+    CalculaHorario calculaHorario=null;
+    int idEstacion=0;
+    String nuevoDia="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,26 +85,42 @@ public class HorarioActivity extends ActionBarActivity {
 
 
     public void cargarDatos(){
-        CalculaHorario calculaHorario= new CalculaHorario(this.getApplicationContext());
-        int idEstacion=this.getIntent().getExtras().getInt("idEstacion");
-        esTerminal(idEstacion);
+        calculaHorario= new CalculaHorario(this.getApplicationContext());
+        idEstacion=this.getIntent().getExtras().getInt("idEstacion");
 
         //Obtengo la fecha
         Calendar c = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String formattedDate = dateFormat.format(c.getTime());
+        esTerminal(idEstacion,formattedDate);
 
         List<HorarioEstacion> calcularHorariosList=calculaHorario.calcularHorarios(idEstacion,formattedDate);
         horasABayovar = new String[calcularHorariosList.size()];
         horasAVilla = new String[calcularHorariosList.size()];
-
 
         for(int i=0; i<calcularHorariosList.size(); i++){
             horasABayovar[i]=calcularHorariosList.get(i).getHoraABayovar();
             horasAVilla[i]=calcularHorariosList.get(i).getHoraAVillaSalvador();
         }
 
+        //Valida loshorarios por dirreción
+        //dirección Villa
+        calcularHorariosList=validaObtenerHorario(horasAVilla,formattedDate);
+        horasAVilla = new String[calcularHorariosList.size()];
+        for(int i=0; i<calcularHorariosList.size(); i++){
+            horasAVilla[i]=calcularHorariosList.get(i).getHoraAVillaSalvador();
+        }
+        if(esHorarioDiaSiguiente && idEstacion==1){tvDireccionVilla.setText("Llegada a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
+        else if(esHorarioDiaSiguiente){tvDireccionVilla.setText("Dirección a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
 
+        //dirección Bayovar
+        calcularHorariosList=validaObtenerHorario(horasABayovar,formattedDate);
+        horasABayovar = new String[calcularHorariosList.size()];
+        for(int i=0; i<calcularHorariosList.size(); i++){
+            horasABayovar[i]=calcularHorariosList.get(i).getHoraABayovar();
+        }
+        if(esHorarioDiaSiguiente && idEstacion==26){tvDireccionBayovar.setText("Llegada a Bayóvar ("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
+        else if(esHorarioDiaSiguiente){tvDireccionBayovar.setText("Dirección a Bayóvar \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
 
         AdaptadorListaHorarioABayovar adaptadorListaHorarioABayovar = new AdaptadorListaHorarioABayovar(this,horasABayovar);
         AdaptadorListaHorarioAVillaSalvador adaptadorListaHorarioAVillaSalvador = new AdaptadorListaHorarioAVillaSalvador(this,horasAVilla);
@@ -110,6 +130,45 @@ public class HorarioActivity extends ActionBarActivity {
 
         seteaCursorLista(horasABayovar, LstHorariosABayovar);
         seteaCursorLista(horasAVilla, LstHorariosAVilla);
+    }
+
+    private List<HorarioEstacion> validaObtenerHorario(String direccion[], String fecha){
+        esHorarioDiaSiguiente=false;
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
+        String formattedDate = dateFormat.format(c.getTime());
+
+        //Obteniendo la hora actual
+        StringTokenizer stActual= new StringTokenizer(formattedDate,": ");
+        int horaActual=Integer.parseInt(stActual.nextToken());
+        int minutoActual=Integer.parseInt((stActual.nextToken()));
+        String AMPM=stActual.nextToken().toUpperCase();
+        //validando las 24 y 00 horas
+        if(horaActual<=12){
+            if((AMPM.equals("PM")&&horaActual!=12) || (AMPM.equals("P.M.")&&horaActual!=12)){horaActual+=12;}
+            else if((AMPM.equals("AM")&&horaActual==12) || (AMPM.equals("A.M.")&&horaActual==12)){horaActual=0;}
+        }
+
+        //Última hora a la Direccion
+        String ultimaHoraDireccion = direccion[direccion.length-1];
+        StringTokenizer stDireccionUltimo= new StringTokenizer(ultimaHoraDireccion,":");
+        int horaultimaDireccion=Integer.parseInt(stDireccionUltimo.nextToken());
+        int minutoultimoDireccion=Integer.parseInt((stDireccionUltimo.nextToken()));
+
+        calculaHorario= new CalculaHorario(getApplicationContext());
+        List<HorarioEstacion> calcularHorariosList=calculaHorario.calcularHorarios(idEstacion, fecha);
+
+        if(((horaActual>horaultimaDireccion))||((horaActual==horaultimaDireccion)&&minutoActual>minutoultimoDireccion)){
+            esHorarioDiaSiguiente = true;
+            c.add(Calendar.DAY_OF_MONTH, 1);
+
+            SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+            String formatoDia = date.format(c.getTime());
+            nuevoDia=formatoDia;
+            Log.e("HORARAIONUEVO",formatoDia);
+            calcularHorariosList=calculaHorario.calcularHorarios(idEstacion, formatoDia);
+        }
+        return calcularHorariosList;
     }
 
 
@@ -217,12 +276,16 @@ public class HorarioActivity extends ActionBarActivity {
     }
 
 
-    public void esTerminal(int idEstacion){
+    public void esTerminal(int idEstacion, String fechaActual){
         if(idEstacion==1){
-            tvDireccionVilla.setText("Llegada a V. E. S.");
+            tvDireccionVilla.setText("Llegada a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(fechaActual)+")");
         }
         else if(idEstacion==26){
-            tvDireccionBayovar.setText("Llegada a Bayóvar");
+            tvDireccionBayovar.setText("Llegada a Bayóvar \n("+calculaHorario.muestraDiaDeSemana(fechaActual)+")");
+        }
+        else{
+            tvDireccionVilla.setText("Dirección a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(fechaActual)+")");
+            tvDireccionBayovar.setText("Dirección a Bayóvar \n("+calculaHorario.muestraDiaDeSemana(fechaActual)+")");
         }
     }
 

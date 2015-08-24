@@ -59,7 +59,8 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
 
     Context activity;
     int origen, destino;
-    String dia="";
+    boolean esHorarioDiaSiguiente;
+    String dia="", nuevoDia="";
     String [] estaciones=null;
     Viaje[] datosViaje;
 
@@ -86,7 +87,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         btnCalculaViaje = (Button)rootView.findViewById(R.id.btnCalculaViaje);
 
         formatoDia = new SimpleDateFormat("dd-MM-yyyy");
-
+        esHorarioDiaSiguiente=false;
 
         origen = CalculaViaje.ORIGEN_DEFAULT;
         destino = CalculaViaje.DESTINO_DEFAULT;
@@ -191,11 +192,13 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
 
         //Instanciando objetos del dialog
         TextView tvHoraEspera = (TextView)dialoglayout.findViewById(R.id.tvHoraEspera);
+        TextView tvLlegada = (TextView)dialoglayout.findViewById(R.id.tvLlegada);
         TextView tvHoraLlegTren = (TextView)dialoglayout.findViewById(R.id.tvHoraLlegTren);
         TextView tvTiempoEstimado = (TextView)dialoglayout.findViewById(R.id.tvTiempoEstimado);
         TextView tvHoraLlegada = (TextView)dialoglayout.findViewById(R.id.tvHoraLlegada);
         TextView tvNota = (TextView)dialoglayout.findViewById(R.id.tvNota);
         tvNota.setVisibility(View.GONE);
+
 
         //Calculando horarios
         calculaHorario= new CalculaHorario(activity.getApplicationContext());
@@ -209,9 +212,21 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
             horasAVilla[i]=calcularHorariosList.get(i).getHoraAVillaSalvador();
         }
 
-        /*
-        //Obteniendo hora actual
-        Calendar c = Calendar.getInstance();*/
+
+        //validaObtenerHorario
+        if(destino<origen){
+            calcularHorariosList=validaObtenerHorario(horasAVilla);
+        }
+        else if(destino>origen){
+            calcularHorariosList=validaObtenerHorario(horasABayovar);
+        }
+        horasABayovar = new String[calcularHorariosList.size()];
+        horasAVilla = new String[calcularHorariosList.size()];
+        for(int i=0; i<calcularHorariosList.size(); i++){
+            horasABayovar[i]=calcularHorariosList.get(i).getHoraABayovar();
+            horasAVilla[i]=calcularHorariosList.get(i).getHoraAVillaSalvador();
+        }
+
 
         //calculando datos para llenar en Popup
             //}Hora de Espera
@@ -232,8 +247,8 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         }
 
             //Verifica si ya pasó la última salida
-        if(varHoraLlegadaTren.equals(varPrimeraHora)){
-            tvNota.setText("* Última hora de salida: "+varUltimaHora);
+        if(varHoraLlegadaTren.equals(varPrimeraHora) && esHorarioDiaSiguiente){
+            tvNota.setText("* La última hora de salida fue: "+varUltimaHora);
             tvNota.setVisibility(View.VISIBLE);
         }
 
@@ -281,6 +296,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
 
 
         tvHoraEspera.setText(horaEspera+":"+((minutoEspera+"").length()==1 ? "0"+minutoEspera : ""+minutoEspera));
+        if(esHorarioDiaSiguiente){tvLlegada.setText("Llegada del tren ("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
         tvHoraLlegTren.setText(varHoraLlegadaTren);
         tvTiempoEstimado.setText(varTiempoEstimado);
         tvHoraLlegada.setText(varHoraLlegada+":"+((varMinutoLlegada+"").length()==1? "0"+varMinutoLlegada : varMinutoLlegada));
@@ -337,13 +353,14 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
     }
 
 
-    private List<HorarioEstacion> validaObtenerHorario(String ultimaHoraDireccion){
+    private List<HorarioEstacion> validaObtenerHorario(String direccion[]){
+        esHorarioDiaSiguiente=false;
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
-        String formattedDate = dateFormat.format(c.getTime());
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
+        //String formattedDate = dateFormat.format(c.getTime());
 
         //Obteniendo la hora actual
-        StringTokenizer stActual= new StringTokenizer(formattedDate,":");
+        StringTokenizer stActual= new StringTokenizer(btnHora.getText().toString(),": ");
         int horaActual=Integer.parseInt(stActual.nextToken());
         int minutoActual=Integer.parseInt((stActual.nextToken()));
         String AMPM=stActual.nextToken().toUpperCase();
@@ -354,6 +371,7 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         }
 
         //Última hora a la Direccion
+        String ultimaHoraDireccion = direccion[direccion.length-1];
         StringTokenizer stDireccionUltimo= new StringTokenizer(ultimaHoraDireccion,":");
         int horaultimaDireccion=Integer.parseInt(stDireccionUltimo.nextToken());
         int minutoultimoDireccion=Integer.parseInt((stDireccionUltimo.nextToken()));
@@ -362,15 +380,20 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
         List<HorarioEstacion> calcularHorariosList=calculaHorario.calcularHorarios(origen + 1, btnDia.getText().toString());
 
         if(((horaActual>horaultimaDireccion))||((horaActual==horaultimaDireccion)&&minutoActual>minutoultimoDireccion)){
+            esHorarioDiaSiguiente = true;
             StringTokenizer stDay = new StringTokenizer(btnDia.getText().toString(),"-");
             int day=Integer.parseInt(stDay.nextToken()); int month=Integer.parseInt(stDay.nextToken());
-            int year=Integer.parseInt(stDay.nextToken());
+            int year=Integer.parseInt(stDay.nextToken());Log.e("HORARAIOANTES",day+" "+month+" "+year);
             c.set(year, month, day);
+            SimpleDateFormat dateasd = new SimpleDateFormat("dd-MM-yyyy");
+            String formatoDia2 = dateasd.format(c.getTime());Log.e("HORASETEADA",formatoDia2);
             c.add(Calendar.DAY_OF_MONTH, 1);
+            c.add(Calendar.MONTH,-1);
 
             SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
             String formatoDia = date.format(c.getTime());
-
+            nuevoDia=formatoDia;
+            Log.e("HORARAIONUEVO",formatoDia);
             calcularHorariosList=calculaHorario.calcularHorarios(origen + 1, formatoDia);
         }
         return calcularHorariosList;
