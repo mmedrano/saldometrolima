@@ -76,7 +76,7 @@
                 android:id="@+id/tvCreditoAndina"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
-                android:paddingTop="20sp"
+                android:paddingTop="10sp"
                 android:text="@string/creditos_andina"
                 android:textSize="15sp"/>
         </LinearLayout>

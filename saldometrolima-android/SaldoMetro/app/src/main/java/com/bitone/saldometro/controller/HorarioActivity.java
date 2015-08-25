@@ -103,24 +103,24 @@ public class HorarioActivity extends ActionBarActivity {
             horasAVilla[i]=calcularHorariosList.get(i).getHoraAVillaSalvador();
         }
 
-        //Valida loshorarios por dirreci髇
-        //direcci髇 Villa
+        //Valida loshorarios por dirreci贸n
+        //direcci贸n Villa
         calcularHorariosList=validaObtenerHorario(horasAVilla,formattedDate);
         horasAVilla = new String[calcularHorariosList.size()];
         for(int i=0; i<calcularHorariosList.size(); i++){
             horasAVilla[i]=calcularHorariosList.get(i).getHoraAVillaSalvador();
         }
         if(esHorarioDiaSiguiente && idEstacion==1){tvDireccionVilla.setText("Llegada a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
-        else if(esHorarioDiaSiguiente){tvDireccionVilla.setText("Direcci髇 a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
+        else if(esHorarioDiaSiguiente){tvDireccionVilla.setText("Direcci贸n a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
 
-        //direcci髇 Bayovar
+        //direcci贸n Bayovar
         calcularHorariosList=validaObtenerHorario(horasABayovar,formattedDate);
         horasABayovar = new String[calcularHorariosList.size()];
         for(int i=0; i<calcularHorariosList.size(); i++){
             horasABayovar[i]=calcularHorariosList.get(i).getHoraABayovar();
         }
-        if(esHorarioDiaSiguiente && idEstacion==26){tvDireccionBayovar.setText("Llegada a Bay髒ar ("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
-        else if(esHorarioDiaSiguiente){tvDireccionBayovar.setText("Direcci髇 a Bay髒ar \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
+        if(esHorarioDiaSiguiente && idEstacion==26){tvDireccionBayovar.setText("Llegada a Bay贸var ("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
+        else if(esHorarioDiaSiguiente){tvDireccionBayovar.setText("Direcci贸n a Bay贸var \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
 
         AdaptadorListaHorarioABayovar adaptadorListaHorarioABayovar = new AdaptadorListaHorarioABayovar(this,horasABayovar);
         AdaptadorListaHorarioAVillaSalvador adaptadorListaHorarioAVillaSalvador = new AdaptadorListaHorarioAVillaSalvador(this,horasAVilla);
@@ -149,7 +149,7 @@ public class HorarioActivity extends ActionBarActivity {
             else if((AMPM.equals("AM")&&horaActual==12) || (AMPM.equals("A.M.")&&horaActual==12)){horaActual=0;}
         }
 
-        //趌tima hora a la Direccion
+        //煤ltima hora a la Direccion
         String ultimaHoraDireccion = direccion[direccion.length-1];
         StringTokenizer stDireccionUltimo= new StringTokenizer(ultimaHoraDireccion,":");
         int horaultimaDireccion=Integer.parseInt(stDireccionUltimo.nextToken());
@@ -194,7 +194,7 @@ public class HorarioActivity extends ActionBarActivity {
         int horaADireccion=Integer.parseInt(stDireccion.nextToken());
         int minutoADireccion=Integer.parseInt((stDireccion.nextToken()));
 
-        //趌tima hora a la Direccion
+        //煤ltima hora a la Direccion
         StringTokenizer stDireccionUltimo= new StringTokenizer(horaDireccion[horaDireccion.length-1],":");
         int horaultimaDireccion=Integer.parseInt(stDireccionUltimo.nextToken());
         int minutoultimoDireccion=Integer.parseInt((stDireccionUltimo.nextToken()));
@@ -253,7 +253,7 @@ public class HorarioActivity extends ActionBarActivity {
             else if((AMPM.equals("AM")&&horaActual==12) || (AMPM.equals("A.M.")&&horaActual==12)){horaActual=0;}
         }
 
-        //趌tima hora a la Direccion
+        //煤ltima hora a la Direccion
         StringTokenizer stDireccionUltimo= new StringTokenizer(horaDireccion[horaDireccion.length-1],":");
         int horaultimaDireccion=Integer.parseInt(stDireccionUltimo.nextToken());
         int minutoultimoDireccion=Integer.parseInt((stDireccionUltimo.nextToken()));
@@ -278,14 +278,16 @@ public class HorarioActivity extends ActionBarActivity {
 
     public void esTerminal(int idEstacion, String fechaActual){
         if(idEstacion==1){
-            tvDireccionVilla.setText("Llegada a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(fechaActual)+")");
+            tvDireccionVilla.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+            tvDireccionBayovar.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
         }
         else if(idEstacion==26){
-            tvDireccionBayovar.setText("Llegada a Bay髒ar \n("+calculaHorario.muestraDiaDeSemana(fechaActual)+")");
+            tvDireccionBayovar.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+            tvDireccionVilla.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
         }
         else{
-            tvDireccionVilla.setText("Direcci髇 a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(fechaActual)+")");
-            tvDireccionBayovar.setText("Direcci髇 a Bay髒ar \n("+calculaHorario.muestraDiaDeSemana(fechaActual)+")");
+            tvDireccionVilla.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+            tvDireccionBayovar.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
         }
     }
 

@@ -34,7 +34,7 @@
                 android:paddingBottom="10sp"
                 android:text="@string/nombre_completo_app"
                 android:textColor="@color/fondo_metro"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"/>
             <TextView
                 android:gravity="center"
@@ -52,7 +52,7 @@
                 android:paddingTop="5sp"
                 android:text="@string/nombre_empresa"
                 android:textColor="@color/negro"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
             <TextView
                 android:gravity="center"
@@ -70,10 +70,11 @@
                 android:paddingTop="10sp"
                 android:text="@string/contacto_empresa"
                 android:textColor="@color/fondo_metro"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
             <TextView
                 android:gravity="center"
+                android:id="@+id/tvCreditoAndina"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
                 android:paddingTop="12sp"
