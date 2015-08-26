@@ -384,11 +384,12 @@ public class CalcularViajeFragment extends DialogFragment implements View.OnClic
             StringTokenizer stDay = new StringTokenizer(btnDia.getText().toString(),"-");
             int day=Integer.parseInt(stDay.nextToken()); int month=Integer.parseInt(stDay.nextToken());
             int year=Integer.parseInt(stDay.nextToken());Log.e("HORARAIOANTES",day+" "+month+" "+year);
-            c.set(year, month, day);
+            c.set(year, month-1, day);
             SimpleDateFormat dateasd = new SimpleDateFormat("dd-MM-yyyy");
             String formatoDia2 = dateasd.format(c.getTime());Log.e("HORASETEADA",formatoDia2);
+            //c.add(Calendar.MONTH, -1);
             c.add(Calendar.DAY_OF_MONTH, 1);
-            c.add(Calendar.MONTH,-1);
+
 
             SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
             String formatoDia = date.format(c.getTime());
