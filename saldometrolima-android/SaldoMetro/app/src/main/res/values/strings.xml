@@ -65,6 +65,12 @@
     <string name="alert_desc3">Tiempo de viaje</string>
     <string name="alert_desc4">Llegada al destino</string>
     <string name="title_activity_estacion_maps">Map</string>
+
+    <!-- Horarios -->
+    <string name="direcVES">Dirección a V. E. S.</string>
+    <string name="direcBayovar">Dirección a Bayóvar</string>
+    <string name="llegadaVES">Llegada a V. E. S.</string>
+    <string name="llegadaBayovar">Llegada a Bayóvar</string>
     
     <!-- Sobre Mi Metro Lima -->
     <string name="nombre_completo_app">Mi Metro Lima  v1.0.0</string>

@@ -103,24 +103,24 @@ public class HorarioActivity extends ActionBarActivity {
             horasAVilla[i]=calcularHorariosList.get(i).getHoraAVillaSalvador();
         }
 
-        //Valida loshorarios por dirreci贸n
-        //direcci贸n Villa
+        //Valida loshorarios por dirreci髇
+        //direcci髇 Villa
         calcularHorariosList=validaObtenerHorario(horasAVilla,formattedDate);
         horasAVilla = new String[calcularHorariosList.size()];
         for(int i=0; i<calcularHorariosList.size(); i++){
             horasAVilla[i]=calcularHorariosList.get(i).getHoraAVillaSalvador();
         }
-        if(esHorarioDiaSiguiente && idEstacion==1){tvDireccionVilla.setText("Llegada a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
-        else if(esHorarioDiaSiguiente){tvDireccionVilla.setText("Direcci贸n a V. E. S. \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
+        if(esHorarioDiaSiguiente && idEstacion==1){tvDireccionVilla.setText(getString(R.string.llegadaVES)+"\n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
+        else if(esHorarioDiaSiguiente){tvDireccionVilla.setText(getString(R.string.direcVES)+"\n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
 
-        //direcci贸n Bayovar
+        //direcci髇 Bayovar
         calcularHorariosList=validaObtenerHorario(horasABayovar,formattedDate);
         horasABayovar = new String[calcularHorariosList.size()];
         for(int i=0; i<calcularHorariosList.size(); i++){
             horasABayovar[i]=calcularHorariosList.get(i).getHoraABayovar();
         }
-        if(esHorarioDiaSiguiente && idEstacion==26){tvDireccionBayovar.setText("Llegada a Bay贸var ("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
-        else if(esHorarioDiaSiguiente){tvDireccionBayovar.setText("Direcci贸n a Bay贸var \n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
+        if(esHorarioDiaSiguiente && idEstacion==26){tvDireccionBayovar.setText(getString(R.string.llegadaBayovar)+"\n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
+        else if(esHorarioDiaSiguiente){tvDireccionBayovar.setText(getString(R.string.direcBayovar)+"\n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
 
         AdaptadorListaHorarioABayovar adaptadorListaHorarioABayovar = new AdaptadorListaHorarioABayovar(this,horasABayovar);
         AdaptadorListaHorarioAVillaSalvador adaptadorListaHorarioAVillaSalvador = new AdaptadorListaHorarioAVillaSalvador(this,horasAVilla);
@@ -278,16 +278,14 @@ public class HorarioActivity extends ActionBarActivity {
 
     public void esTerminal(int idEstacion, String fechaActual){
         if(idEstacion==1){
-            tvDireccionVilla.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
-            tvDireccionBayovar.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
-        }
-        else if(idEstacion==26){
-            tvDireccionBayovar.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
-            tvDireccionVilla.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
-        }
-        else{
-            tvDireccionVilla.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
-            tvDireccionBayovar.append("\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+            tvDireccionVilla.setText(getString(R.string.llegadaVES)+"\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+            tvDireccionBayovar.setText(getString(R.string.direcBayovar)+"\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+        } else if (idEstacion == 26) {
+            tvDireccionVilla.setText(getString(R.string.direcVES) + "\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+            tvDireccionBayovar.setText(getString(R.string.llegadaBayovar) + "\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+        } else {
+            tvDireccionVilla.setText(getString(R.string.direcVES) + "\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+            tvDireccionBayovar.setText(getString(R.string.direcBayovar) + "\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
         }
     }
 
