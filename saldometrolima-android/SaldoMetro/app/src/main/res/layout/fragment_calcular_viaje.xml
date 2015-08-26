@@ -49,7 +49,7 @@
                 android:paddingLeft="20sp"
                 android:paddingRight="20sp">
                 <Button
-                    android:background="@drawable/button_metro_yellow"
+                    android:background="@drawable/button_metro_yellow_left"
                     android:id="@+id/btnDia"
                     android:drawableLeft="@drawable/ic_event_white"
                     android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                     style="@style/buttonStyle"/>
 
                 <Button
-                    android:background="@drawable/button_metro_yellow"
+                    android:background="@drawable/button_metro_yellow_right"
                     android:id="@+id/btnHora"
                     android:drawableLeft="@drawable/ic_alarm_white"
                     android:layout_height="wrap_content"
