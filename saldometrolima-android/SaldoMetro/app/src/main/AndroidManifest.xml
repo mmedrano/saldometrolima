@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bitone.saldometro.controller" >
+    package="com.bitone.saldometro.app" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,7 +23,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.bitone.saldometro.app.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,27 +33,27 @@
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.bitone.saldometro.controller.MainActivity" />
+            android:value="com.bitone.saldometro.app.MainActivity" />
 
         <activity
-            android:name=".ElegirTarjetaActivity"
+            android:name="com.bitone.saldometro.app.ElegirTarjetaActivity"
             android:label="@string/title_activity_elegir_tarjeta"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".AgregarSaldoActivity"
+            android:name="com.bitone.saldometro.app.AgregarSaldoActivity"
             android:label="@string/title_activity_agregar_saldo" >
         </activity>
         <activity
-            android:name=".MarcarViajeActivity"
+            android:name="com.bitone.saldometro.app.MarcarViajeActivity"
             android:label="@string/title_activity_marcar_viaje">
         </activity>
         <activity
-            android:name=".HorarioActivity"
+            android:name="com.bitone.saldometro.app.HorarioActivity"
             android:label="Horario">
         </activity>
         <activity
-            android:name=".InformacionEstacionActivity"
+            android:name="com.bitone.saldometro.app.InformacionEstacionActivity"
             android:label="Horario" >
         </activity>
 
@@ -62,10 +62,10 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/google_maps_key_mmedrano" />
+            android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".EstacionMapsActivity"
+            android:name="com.bitone.saldometro.app.EstacionMapsActivity"
             android:label="@string/title_activity_estacion_maps" >
         </activity>
     </application>

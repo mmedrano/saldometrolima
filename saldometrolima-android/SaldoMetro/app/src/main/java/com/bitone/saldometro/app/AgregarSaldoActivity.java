@@ -1,4 +1,4 @@
-package com.bitone.saldometro.controller;
+package com.bitone.saldometro.app;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,9 +13,7 @@ import android.widget.Toast;
 import com.bitone.saldometro.model.business.MovimientoSaldoBusiness;
 import com.bitone.saldometro.model.entity.MovimientoSaldo;
 import com.bitone.saldometro.model.entity.SMResultado;
-import com.bitone.saldometro.model.entity.Tarifa;
 import com.bitone.saldometro.model.entity.Tarjeta;
-import com.bitone.saldometro.model.entity.TipoMovimiento;
 import com.bitone.saldometro.utils.CalculaHorario;
 import com.bitone.saldometro.utils.Globales;
 import com.bitone.saldometro.utils.SMPreferences;

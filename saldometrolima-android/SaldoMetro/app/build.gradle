@@ -7,16 +7,25 @@ android {
     compileOptions.encoding = 'ISO-8859-1'
 
     defaultConfig {
-        applicationId "com.bitone.saldometro.controller"
+        applicationId "com.bitone.saldometro.app"
         minSdkVersion 10
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            storeFile file("milineauno-release-key.keystore")
+            storePassword "milineaunokey"
+            keyAlias "milineaunoreleasekey"
+            keyPassword "milineaunokey"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }

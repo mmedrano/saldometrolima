@@ -1,8 +1,6 @@
-package com.bitone.saldometro.controller;
+package com.bitone.saldometro.app;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -103,8 +101,8 @@ public class HorarioActivity extends ActionBarActivity {
             horasAVilla[i]=calcularHorariosList.get(i).getHoraAVillaSalvador();
         }
 
-        //Valida loshorarios por dirreción
-        //dirección Villa
+        //Valida loshorarios por dirreciï¿½n
+        //direcciï¿½n Villa
         calcularHorariosList=validaObtenerHorario(horasAVilla,formattedDate);
         horasAVilla = new String[calcularHorariosList.size()];
         for(int i=0; i<calcularHorariosList.size(); i++){
@@ -113,7 +111,7 @@ public class HorarioActivity extends ActionBarActivity {
         if(esHorarioDiaSiguiente && idEstacion==1){tvDireccionVilla.setText(getString(R.string.llegadaVES)+"\n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
         else if(esHorarioDiaSiguiente){tvDireccionVilla.setText(getString(R.string.direcVES)+"\n("+calculaHorario.muestraDiaDeSemana(nuevoDia)+")");}
 
-        //dirección Bayovar
+        //direcciï¿½n Bayovar
         calcularHorariosList=validaObtenerHorario(horasABayovar,formattedDate);
         horasABayovar = new String[calcularHorariosList.size()];
         for(int i=0; i<calcularHorariosList.size(); i++){
@@ -278,8 +276,8 @@ public class HorarioActivity extends ActionBarActivity {
 
     public void esTerminal(int idEstacion, String fechaActual){
         if(idEstacion==1){
-            tvDireccionVilla.setText(getString(R.string.llegadaVES)+"\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
-            tvDireccionBayovar.setText(getString(R.string.direcBayovar)+"\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+            tvDireccionVilla.setText(getString(R.string.llegadaVES) + "\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
+            tvDireccionBayovar.setText(getString(R.string.direcBayovar) + "\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
         } else if (idEstacion == 26) {
             tvDireccionVilla.setText(getString(R.string.direcVES) + "\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
             tvDireccionBayovar.setText(getString(R.string.llegadaBayovar) + "\n(" + calculaHorario.muestraDiaDeSemana(fechaActual) + ")");
