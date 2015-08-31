@@ -1,9 +1,6 @@
-package com.bitone.saldometro.controller;
+package com.bitone.saldometro.app;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -19,7 +16,6 @@ import com.bitone.saldometro.model.business.MovimientoSaldoBusiness;
 import com.bitone.saldometro.model.entity.MovimientoSaldo;
 import com.bitone.saldometro.model.entity.Tarifa;
 import com.bitone.saldometro.model.entity.Tarjeta;
-import com.bitone.saldometro.model.entity.TipoMovimiento;
 import com.bitone.saldometro.model.entity.TipoTarjeta;
 import com.bitone.saldometro.utils.CalculaHorario;
 import com.bitone.saldometro.utils.Globales;

@@ -1,4 +1,4 @@
-package com.bitone.saldometro.controller;
+package com.bitone.saldometro.app;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -18,12 +18,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.bitone.saldometro.controller.adapter.CustomDrawerAdapter;
-import com.bitone.saldometro.controller.item.DrawerItem;
+import com.bitone.saldometro.app.adapter.CustomDrawerAdapter;
+import com.bitone.saldometro.app.item.DrawerItem;
 
 import java.util.ArrayList;
 import java.util.List;

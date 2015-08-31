@@ -1,36 +1,25 @@
-package com.bitone.saldometro.controller;
+package com.bitone.saldometro.app;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.telephony.PhoneNumberUtils;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
-import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.bitone.saldometro.model.business.EstacionBusiness;
 import com.bitone.saldometro.model.entity.Estacion;
-import com.bitone.saldometro.model.entity.HistoriaTarjeta;
 import com.bitone.saldometro.model.entity.HorarioEstacion;
 import com.bitone.saldometro.model.entity.Viaje;
 import com.bitone.saldometro.utils.CalculaHorario;
@@ -38,7 +27,6 @@ import com.bitone.saldometro.utils.CalculaViaje;
 import com.bitone.saldometro.utils.Validar;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.StringTokenizer;

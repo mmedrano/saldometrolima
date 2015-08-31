@@ -7,13 +7,11 @@
 https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=12:6F:30:DC:81:6C:9E:C4:E5:A9:25:ED:B8:19:79:9B:51:26:A6:5E%3Bcom.bitone.saldometro.controller
 
     You can also add your credentials to an existing key, using this line:
-    12:6F:30:DC:81:6C:9E:C4:E5:A9:25:ED:B8:19:79:9B:51:26:A6:5E;com.bitone.saldometro.controller
-
-    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    12:6F:30:DC:81:6C:9E:C4:E5:A9:25:ED:B8:19:79:9B:51:26:A6:5E;appnce you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
     -->
     <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
-        AIzaSyBtDP-TojGy26CizznIA61u7mtD8LCnmX0
+        AIzaSyCmz3I1L1RrIRVSwVwzwvcFUKAkI8DnHOU
     </string>
     <string name="google_maps_key_cmedrano" translatable="false" templateMergeStrategy="preserve">
         AIzaSyAifE-ZVv7dBSlaAZ3mY6IxtpEC4Hw1D7o

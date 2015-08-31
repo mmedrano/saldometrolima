@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mi Linea 1</string>
+    <string name="app_name">Mi Línea Uno</string>
 
     <string name="titulo_opcion_inicio">Inicio</string>
     <string name="titulo_opcion_elegir_tarjeta">Elegir Tarjeta</string>
@@ -73,7 +73,7 @@
     <string name="llegadaBayovar">Llegada a Bayóvar</string>
     
     <!-- Sobre Mi Metro Lima -->
-    <string name="nombre_completo_app">Mi Metro Lima  v1.0.0</string>
+    <string name="nombre_completo_app">Mi Línea Uno v1.0</string>
     <string name="iniciativa_app">Una iniciativa de</string>
     <string name="nombre_empresa">BITONE TECHNOLOGIES</string>
     <string name="derechos_reservados">Todos los derechos reservados</string>
@@ -81,7 +81,7 @@
     <string name="creditos_andina">Créditos de imagen de fondo: ANDINA</string>
     <string name="url_andina">http://www.andina.com.pe/</string>
 
-    <string name="url_bitone">http://www.bitoneperu.com/</string>
+    <string name="url_bitone">http://www.bitoneperu.com/milineauno</string>
     <string name="email_bitone">contacto@bitoneperu.com</string>
     <string name="email_asunto">Contacto BitOne</string>
 </resources>

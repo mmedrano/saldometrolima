@@ -1,4 +1,4 @@
-package com.bitone.saldometro.controller.item;
+package com.bitone.saldometro.app.item;
 
 public class DrawerItem {
     private String ItemName;

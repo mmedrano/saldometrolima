@@ -1,4 +1,4 @@
-package com.bitone.saldometro.controller.adapter;
+package com.bitone.saldometro.app.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bitone.saldometro.controller.R;
-import com.bitone.saldometro.controller.item.DrawerItem;
+import com.bitone.saldometro.app.R;
+import com.bitone.saldometro.app.item.DrawerItem;
 
 import java.util.List;
 

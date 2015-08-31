@@ -1,4 +1,4 @@
-package com.bitone.saldometro.controller;
+package com.bitone.saldometro.app;
 
 import android.content.Intent;
 import android.net.Uri;

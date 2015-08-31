@@ -1,4 +1,4 @@
-package com.bitone.saldometro.controller;
+package com.bitone.saldometro.app;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import com.bitone.saldometro.model.entity.TipoTarjeta;
 import com.bitone.saldometro.utils.SMPreferences;
-
-import java.nio.charset.Charset;
 
 
 public class ElegirTarjetaActivity extends ActionBarActivity implements View.OnClickListener {
